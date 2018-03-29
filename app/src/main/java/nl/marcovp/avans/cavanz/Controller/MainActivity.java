@@ -7,12 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import nl.marcovp.avans.cavanz.Data.ApiHelper;
+import nl.marcovp.avans.cavanz.Data.OnMovieSetAvailable;
+import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMovieSetAvailable {
     private final String TAG = getClass().getSimpleName();
-
     private TextView mTextMessage;
+
+
+    private ArrayList<Movie> movies;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,8 +50,16 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        new ApiHelper(this).execute();
+
+
         // Hello World!
 
     }
 
+
+    @Override
+    public void OnMovieSetAvailable(ArrayList<Movie> movies) {
+        this.movies = movies;
+    }
 }
