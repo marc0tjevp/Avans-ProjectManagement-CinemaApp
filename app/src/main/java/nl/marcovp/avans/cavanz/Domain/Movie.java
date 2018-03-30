@@ -8,6 +8,7 @@ public class Movie {
     private final String TAG = getClass().getSimpleName();
 
     private String title;
+    private int id;
     private double rating;
     private String imageUrl;
     private String videoUrl;
@@ -70,5 +71,13 @@ public class Movie {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

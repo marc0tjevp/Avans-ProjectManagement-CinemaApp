@@ -1,9 +1,15 @@
 package nl.marcovp.avans.cavanz.Data;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+
+import nl.marcovp.avans.cavanz.Domain.Movie;
 
 /**
  * Created by Sander on 3/29/2018.
@@ -57,7 +63,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String TICKET_COLUMN_SHOW_ID = "ShowID";
 
 
-    public SQLiteHelper(Context context, int version) {
+    public SQLiteHelper(Context context) {
         super(context, DB_NAME, null, DB_V);
         Log.d(TAG, "SQLiteHelper: constructor called");
 
@@ -81,15 +87,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY(`" + HALL_COLUMN_HALL_CODE + "`) )");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + MOVIE_TABLE_NAME + " ( `" +
-                MOVIE_COLUMN_MOVIE_ID + "` INTEGER, `" +
+                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT, `" +
                 MOVIE_COLUMN_TITLE + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_RATING + "` NUMERIC NOT NULL, `" +
                 MOVIE_COLUMN_RELEASE_DATE + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_SUMMARY + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_LANGAUGE + "` TEXT NOT NULL, `"
                 + MOVIE_COLUMN_IMG_URL + "` BLOB NOT NULL, `" +
-                MOVIE_COLUMN_VIDEO_URL + "` TEXT NOT NULL, " +
-                "PRIMARY KEY(`" + MOVIE_COLUMN_MOVIE_ID + "`) )");
+                MOVIE_COLUMN_VIDEO_URL + "` TEXT  " + ");");
 
         sqLiteDatabase.execSQL("CREATE TABLE '" + ORDER_TABLE_NAME + "' ( `" +
                 ORDER_COLUMN_ORDER_ID + "` INTEGER, `" +
@@ -141,4 +146,64 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
 
+
+    public ArrayList<Movie> getAllMovies() {
+        Log.d(TAG, "getAllMovies: called");
+        ArrayList<Movie> array_list = new ArrayList<Movie>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + MOVIE_TABLE_NAME + ";", null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+
+            Movie movie = new Movie();
+
+            //////////Putting values in the picture
+
+            movie.setId(res.getInt(res.getColumnIndex(MOVIE_COLUMN_MOVIE_ID)));
+            movie.setTitle(res.getString(res.getColumnIndex(MOVIE_COLUMN_TITLE)));
+            movie.setSummary(res.getString(res.getColumnIndex(MOVIE_COLUMN_SUMMARY)));
+            movie.setReleaseDate(res.getString(res.getColumnIndex(MOVIE_COLUMN_RELEASE_DATE)));
+            movie.setRating(res.getDouble(res.getColumnIndex(MOVIE_COLUMN_RATING)));
+            movie.setLanguage(res.getString(res.getColumnIndex(MOVIE_COLUMN_LANGAUGE)));
+            movie.setImageUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_IMG_URL)));
+            movie.setVideoUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_VIDEO_URL)));
+
+
+            array_list.add(movie);
+            res.moveToNext();
+
+        }
+        ///////////array containing all movies in db
+        close();
+        return array_list;
+    }
+
+    public boolean insertMovie(Movie movie) {
+        Log.d(TAG, "insertPhoto: called");
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(MOVIE_COLUMN_IMG_URL, movie.getImageUrl());
+        contentValues.put(MOVIE_COLUMN_VIDEO_URL, movie.getVideoUrl());
+        contentValues.put(MOVIE_COLUMN_TITLE, movie.getTitle());
+        contentValues.put(MOVIE_COLUMN_SUMMARY, movie.getSummary());
+        contentValues.put(MOVIE_COLUMN_RATING, movie.getRating());
+        contentValues.put(MOVIE_COLUMN_RELEASE_DATE, movie.getReleaseDate());
+        contentValues.put(MOVIE_COLUMN_LANGAUGE, movie.getLanguage());
+
+
+
+
+        Log.d(TAG, "insertMovie: " + movie.getTitle());
+
+
+        db.insert(MOVIE_TABLE_NAME,
+                null,
+                contentValues);
+        close();
+        return true;
+    }
 }

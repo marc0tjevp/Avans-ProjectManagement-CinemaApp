@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Data.ApiHelper;
 import nl.marcovp.avans.cavanz.Data.OnMovieSetAvailable;
+import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.R;
 
@@ -61,5 +63,16 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
     @Override
     public void OnMovieSetAvailable(ArrayList<Movie> movies) {
         this.movies = movies;
+        SQLiteHelper db = new SQLiteHelper(this);
+
+        for (Movie mo :movies
+                ) {db.insertMovie(mo);
+
+        }
+
+
+        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
+
+
     }
 }
