@@ -63,15 +63,15 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
     @Override
     public void OnMovieSetAvailable(ArrayList<Movie> movies) {
         this.movies = movies;
-        SQLiteHelper db = new SQLiteHelper(this);
 
+
+
+/*  /////////////////////////////DB TEST
+       SQLiteHelper db = new SQLiteHelper(this);
         for (Movie mo :movies
                 ) {db.insertMovie(mo);
-
         }
-
-
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
+        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");*/
 
 
     }
