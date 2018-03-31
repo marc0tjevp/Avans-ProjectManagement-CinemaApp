@@ -4,28 +4,38 @@
     <string name="text_navbar_tickets">Tickets</string>
     <string name="text_navbar_info">Informatie</string>
 
-    <!--  Strings needed for info  -->
+    <!--  Strings needed for cinema info  -->
     <string name="info_name" translatable="false">Cavanz Cinema</string>
     <string name="info_street_house_number" translatable="false">Chasséveld 15</string>
     <string name="info_postal_code_city" translatable="false">4811 DH, Breda</string>
     <string name="info_phone_number" translatable="false">088–51 51 000</string>
     <string name="info_email" translatable="false">klantenservice@cavans.nl</string>
     <string name="info_opening">Openingstijden</string>
-    <string name="info_times_opening"> </string>
+    <string name="info_times_opening"> Maandag t/m Vrijdag: 13:00 \- 22:00 \nZaterdag: 11:00 \- 23:00 \nZondag: 11:00 \- 22:00</string>
     <string name="info_title_route">Bereikbaarheid</string>
-    <string name="description_cinema_picture">The cinema</string>
-    <string name="description_maps_button">go to Google Maps</string>
+    <string name="description_maps_button">Ga naar Google Maps</string>
+    <string name="description_cinema_picture">De bioscoop</string>
 
     <!--Strings needed for rates-->
     <string name="title_rates">Tarieven</string>
-    <string name="name_rates_1">Type 1</string>
-    <string name="number_rates_1">€&#8230;</string>
-    <string name="name_rates_2">Type 2</string>
-    <string name="number_rates_2">€&#8230;</string>
+    <string name="name_rates_1">Normaal</string>
+    <string name="number_rates_1" translatable="false">€11,00</string>
+    <string name="name_rates_2">Kinderen t/m 12 jaar</string>
+    <string name="number_rates_2" translatable="false">€7,50</string>
+    <string name="name_rates_3">Studenten</string>
+    <string name="number_rates_3" translatable="false">€9,00</string>
+    <string name="name_rates_4">Senioren</string>
+    <string name="number_rates_4" translatable="false">€9,00</string>
 
     <!-- Placeholder string -->
     <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis disparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
         pretium quis, sem. Nulla consequat massa quis enim.</string>
     <string name="title_activity_payment">PaymentActivity</string>
+
+    <!--Strings for activity_movie_detail-->
+    <string name="actors">Acteurs:</string>
+    <string name="language">Taal:</string>
+    <string name="button_back">Terug</string>
+    <string name="button_select">Selecteer</string>
 </resources>

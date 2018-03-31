@@ -88,7 +88,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/info_times_opening" />
+                    android:lines="3"
+                    android:text="@string/info_times_opening"/>
             </LinearLayout>
 
             <ProgressBar
@@ -141,6 +142,38 @@
                         android:layout_width="280dp"
                         android:layout_gravity="end"
                         android:text="@string/number_rates_2" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_gravity="start"
+                        android:text="@string/name_rates_3" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_gravity="end"
+                        android:text="@string/number_rates_3" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_gravity="start"
+                        android:text="@string/name_rates_4" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_gravity="end"
+                        android:text="@string/number_rates_4" />
                 </TableRow>
             </TableLayout>
 

@@ -111,7 +111,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Taal:"
+        android:text="@string/language"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_description" />
@@ -123,7 +123,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Acteurs:"
+        android:text="@string/actors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_language" />
@@ -135,7 +135,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Terug"
+        android:text="@string/button_back"
         app:layout_constraintBottom_toBottomOf="@+id/temp_button_two"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_actors" />
@@ -147,7 +147,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Selecteer"
+        android:text="@string/button_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temp_button_one"
         app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_actors" />

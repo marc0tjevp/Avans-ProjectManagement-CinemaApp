@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_navbar_films">Movies</string>
+    <string name="text_navbar_tickets">Tickets</string>
+    <string name="text_navbar_info">Information</string>
+    <string name="info_opening">Opening hours</string>
+    <string name="info_times_opening">Monday to Friday: 01:00 pm \\- 10:00 pm Saturday: 11:00 am \\- 11:00 pm Sunday: 11:00 am \\- 10:00 pm</string>
+    <string name="info_title_route">Accessibility</string>
+    <string name="description_cinema_picture">The Cinema</string>
+    <string name="description_maps_button">Go to Google Maps</string>
+    <string name="title_rates">Prices</string>
+    <string name="actors">Actors:</string>
+    <string name="language">Language:</string>
+    <string name="button_back">Back</string>
+    <string name="button_select">Select</string>
+    <string name="name_rates_1">Normal</string>
+    <string name="name_rates_2">children up to and including 12 years old</string>
+    <string name="name_rates_3">Students</string>
+    <string name="name_rates_4">Seniors</string>
+</resources>
