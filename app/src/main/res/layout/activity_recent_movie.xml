@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context="nl.marcovp.avans.cavanz.Controller.RecentMovieActivity">
 
+    <include
+        layout="@layout/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </android.support.constraint.ConstraintLayout>
