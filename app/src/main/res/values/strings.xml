@@ -28,4 +28,12 @@
         Cum sociis natoque penatibus et magnis disparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
         pretium quis, sem. Nulla consequat massa quis enim.</string>
     <string name="title_activity_payment">PaymentActivity</string>
+
+    <string name="movie_title">Title</string>
+    <string name="movie_genre">Genre</string>
+    <string name="movie_release_date">Release datum</string>
+    <string name="movie_duration">Tijdsduur</string>
+    <string name="movie_actors">Acteurs</string>
+    <string name="movie_language">Taal</string>
+
 </resources>
