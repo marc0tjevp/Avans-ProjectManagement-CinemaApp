@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
         new ApiHelper(this).execute();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+/*        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
         mLayoutManager = new GridLayoutManager(this,2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mAdapter = new MovieAdapter(movies,this);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);*/
 
 
         // Hello World!
@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
 
 
-/*  /////////////////////////////DB TEST
+  /////////////////////////////DB TEST
        SQLiteHelper db = new SQLiteHelper(this);
         for (Movie mo :movies
                 ) {db.insertMovie(mo);
         }
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");*/
+        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
 
 
     }
