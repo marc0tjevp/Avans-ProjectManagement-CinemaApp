@@ -38,7 +38,7 @@ public class PaymentActivity extends AppCompatActivity {
         Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
 
         // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
-        showing = new Showing(m, "05-05-2018", new Hall(1, 5, 5), "11:30", "13:10");
+        showing = new Showing(m,"12:00","14:30","2018-04-05",new Hall("1",15,25));
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
@@ -48,8 +48,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         textViewTitle.setText(showing.getMovie().getTitle());
         textViewDate.append(" " + showing.getDate());
-        textViewStartTime.append(" " + showing.getStarttime());
-        textViewEndTime.append(" " + showing.getEndtime());
+        textViewStartTime.append(" " + showing.getStartingTime());
+        textViewEndTime.append(" " + showing.getEndingTime());
         textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
 
         // TODO: Add option to select multiple tickets via arrayadapter
