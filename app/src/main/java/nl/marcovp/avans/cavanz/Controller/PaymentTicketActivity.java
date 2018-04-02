@@ -35,8 +35,8 @@ public class PaymentTicketActivity extends AppCompatActivity {
 
         textViewTitle.setText(showing.getMovie().getTitle());
         textViewDate.append(" " + showing.getDate());
-        textViewStartTime.append(" " + showing.getStarttime());
-        textViewEndTime.append(" " + showing.getEndtime());
+        textViewStartTime.append(" " + showing.getStartingTime());
+        textViewEndTime.append(" " + showing.getEndingTime());
         textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
 
     }

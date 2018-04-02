@@ -189,29 +189,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 
     public Movie getMovie(String movieID) {
-        Log.d(TAG, "getMovie: called");
 
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + MOVIE_TABLE_NAME + " WHERE "+SHOWING_COLUMN_MOVIE_ID+" = " +movieID+";", null);
+        Cursor res = db.rawQuery("SELECT * FROM " + MOVIE_TABLE_NAME + " WHERE " + SHOWING_COLUMN_MOVIE_ID + " = " + movieID + ";", null);
         res.moveToFirst();
 
 
-            Movie movie = new Movie();
+        Movie movie = new Movie();
 
-            //////////Putting values in the movie
+        //////////Putting values in the movie
 
-            movie.setId(res.getInt(res.getColumnIndex(MOVIE_COLUMN_MOVIE_ID)));
-            movie.setTitle(res.getString(res.getColumnIndex(MOVIE_COLUMN_TITLE)));
-            movie.setSummary(res.getString(res.getColumnIndex(MOVIE_COLUMN_SUMMARY)));
-            movie.setReleaseDate(res.getString(res.getColumnIndex(MOVIE_COLUMN_RELEASE_DATE)));
-            movie.setRating(res.getDouble(res.getColumnIndex(MOVIE_COLUMN_RATING)));
-            movie.setLanguage(res.getString(res.getColumnIndex(MOVIE_COLUMN_LANGAUGE)));
-            movie.setImageUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_IMG_URL)));
-            movie.setVideoUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_VIDEO_URL)));
-
-
-
+        movie.setId(res.getInt(res.getColumnIndex(MOVIE_COLUMN_MOVIE_ID)));
+        movie.setTitle(res.getString(res.getColumnIndex(MOVIE_COLUMN_TITLE)));
+        movie.setSummary(res.getString(res.getColumnIndex(MOVIE_COLUMN_SUMMARY)));
+        movie.setReleaseDate(res.getString(res.getColumnIndex(MOVIE_COLUMN_RELEASE_DATE)));
+        movie.setRating(res.getDouble(res.getColumnIndex(MOVIE_COLUMN_RATING)));
+        movie.setLanguage(res.getString(res.getColumnIndex(MOVIE_COLUMN_LANGAUGE)));
+        movie.setImageUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_IMG_URL)));
+        movie.setVideoUrl(res.getString(res.getColumnIndex(MOVIE_COLUMN_VIDEO_URL)));
 
 
         ///////////array containing all movies in db
@@ -220,11 +216,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     public Hall getHall(String hallCode) {
-        Log.d(TAG, "getHall: called");
 
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + HALL_TABLE_NAME + " WHERE "+HALL_COLUMN_HALL_CODE+" = " +hallCode+";", null);
+        Cursor res = db.rawQuery("SELECT * FROM " + HALL_TABLE_NAME + " WHERE " + HALL_COLUMN_HALL_CODE + " = " + hallCode + ";", null);
         res.moveToFirst();
 
 
@@ -235,7 +230,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         hall.setHallNumber(res.getString(res.getColumnIndex(HALL_COLUMN_HALL_CODE)));
         hall.setSeatPerRow(res.getInt(res.getColumnIndex(HALL_COLUMN_SEAT_PER_ROW)));
         hall.setRowAmount(res.getInt(res.getColumnIndex(HALL_COLUMN_SEAT_ROWS_AMOUNT)));
-
 
 
         close();
@@ -252,10 +246,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         res.moveToFirst();
 
 
-
         while (res.isAfterLast() == false) {
 
-            Showing showing= new Showing();
+            Showing showing = new Showing();
 
 
             //////////Putting values in the showing

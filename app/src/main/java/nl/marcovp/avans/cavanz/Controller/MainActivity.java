@@ -30,10 +30,8 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
     private RecyclerView.Adapter mAdapter;
     private SearchView searchView;
 
-    private ArrayList<Movie> movies;
 
     private boolean searchOn = false;
-
 
 
     private ArrayList<Movie> movies;
@@ -45,12 +43,10 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_movies:
-<<<<<<< HEAD
-                    mTextMessage.setText(R.string.text_navbar_films);
 
-=======
+
 //                    mTextMessage.setText(R.string.text_navbar_films);
->>>>>>> develop
+
                     return true;
                 case R.id.navigation_tickets:
 //                    mTextMessage.setText(R.string.text_navbar_tickets);
@@ -83,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         new ApiHelper(this).execute();
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
-        mLayoutManager = new GridLayoutManager(this,2);
+        mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
@@ -94,44 +90,38 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         this.movies = movies;
 
 
-        mAdapter = new MovieAdapter(movies,this);
+        mAdapter = new MovieAdapter(movies, this);
         mRecyclerView.setAdapter(mAdapter);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
-  /////////////////////////////DB TEST
-       SQLiteHelper db = new SQLiteHelper(this);
+        /////////////////////////////DB TEST
+        SQLiteHelper db = new SQLiteHelper(this);
 
-       
-       if (db.getAllMovies().size() == 0){
-           
-        for (Movie mo :movies
-                ) {db.insertMovie(mo);
+
+        if (db.getAllMovies().size() == 0) {
+
+            for (Movie mo : movies
+                    ) {
+                db.insertMovie(mo);
+            }
+
+            Log.d(TAG, "OnMovieSetAvailable: creating test data");
+            db.createTestData();
+            Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
+        } else {
+            Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
         }
-<<<<<<< HEAD
-           Log.d(TAG, "OnMovieSetAvailable: creating test data");
-           db.createTestData();
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
-    }else {
-           Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
-       }
 
+        ////////////////EXCLUDE IN PRODUCTION
         Log.d(TAG, "OnMovieSetAvailable: showings planned: " + db.getAllShowings().size());
         Log.d(TAG, "OnMovieSetAvailable: movies in db: " + db.getAllMovies().size());
-
-
-    
-
-=======
         Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
->>>>>>> develop
+
 
     }
 
-    private void TurnSearchBar(){
-        if(!searchOn) {
+    private void TurnSearchBar() {
+        if (!searchOn) {
             searchView.setVisibility(View.VISIBLE);
             searchOn = true;
         } else {

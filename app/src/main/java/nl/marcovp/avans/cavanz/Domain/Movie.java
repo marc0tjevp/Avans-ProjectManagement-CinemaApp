@@ -1,10 +1,12 @@
 package nl.marcovp.avans.cavanz.Domain;
 
+import java.io.Serializable;
+
 /**
  * Created by Sander on 3/29/2018.
  */
 
-public class Movie {
+public class Movie implements Serializable{
     private final String TAG = getClass().getSimpleName();
 
     private String title;
@@ -16,6 +18,20 @@ public class Movie {
     private String language;
     private String releaseDate;
 
+
+    public Movie() {
+    }
+
+    public Movie(String title, int id, double rating, String imageUrl, String videoUrl, String summary, String language, String releaseDate) {
+        this.title = title;
+        this.id = id;
+        this.rating = rating;
+        this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
+        this.summary = summary;
+        this.language = language;
+        this.releaseDate = releaseDate;
+    }
 
     public String getTitle() {
         return title;

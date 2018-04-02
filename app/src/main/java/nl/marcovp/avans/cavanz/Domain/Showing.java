@@ -1,10 +1,12 @@
 package nl.marcovp.avans.cavanz.Domain;
 
+import java.io.Serializable;
+
 /**
  * Created by Sander on 3/29/2018.
  */
 
-public class Showing {
+public class Showing implements Serializable{
     private final String TAG = getClass().getSimpleName();
 
     private int showID;
@@ -14,6 +16,17 @@ public class Showing {
     private String date;
     private Hall hall;
 
+
+    public Showing() {
+    }
+
+    public Showing(Movie movie, String startingTime, String endingTime, String date, Hall hall) {
+        this.movie = movie;
+        this.startingTime = startingTime;
+        this.endingTime = endingTime;
+        this.date = date;
+        this.hall = hall;
+    }
 
     public Movie getMovie() {
         return movie;
@@ -62,4 +75,8 @@ public class Showing {
     public void setShowID(int showID) {
         this.showID = showID;
     }
+
+
+
+
 }
