@@ -27,10 +27,11 @@ import java.util.List;
 public class GoogleMapsApi implements OnMapReadyCallback{
     private final String TAG = getClass().getSimpleName();
     private Geocoder geocoder;
+    GoogleMap.OnMarkerClickListener listener;
 
-    public GoogleMapsApi(MapView view, View.OnClickListener listener, Context context) {
+    public GoogleMapsApi(MapView view, GoogleMap.OnMarkerClickListener listener, Context context) {
         geocoder = new Geocoder(context);
-        view.setOnClickListener(listener);
+        this.listener = listener;
         view.getMapAsync(this);
     }
 
@@ -48,5 +49,6 @@ public class GoogleMapsApi implements OnMapReadyCallback{
         LatLng location = new LatLng(address.getLatitude(),address.getLongitude());
         googleMap.addMarker(new MarkerOptions().position(location)).setTitle("Cavanz Cinema");
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,21));
+        googleMap.setOnMarkerClickListener(listener);
     }
 }

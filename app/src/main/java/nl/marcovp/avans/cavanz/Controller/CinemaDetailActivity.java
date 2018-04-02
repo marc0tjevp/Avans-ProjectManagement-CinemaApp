@@ -13,14 +13,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.Marker;
 
 import java.net.URI;
 
 import nl.marcovp.avans.cavanz.R;
 import nl.marcovp.avans.cavanz.Util.GoogleMapsApi;
 
-public class CinemaDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
     private final String TAG = getClass().getSimpleName();
 
     ImageButton button;
@@ -61,12 +63,15 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public void onClick(View view) {
+    public boolean onMarkerClick(Marker marker) {
         Uri uri = Uri.parse("google.navigation:q=" + Uri.encode("Chasséveld 15, Breda, Nederland"));
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW,uri);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
+            return true;
+        } else {
+            return false;
         }
     }
 }
