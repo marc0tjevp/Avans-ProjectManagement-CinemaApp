@@ -11,3 +11,4 @@ import nl.marcovp.avans.cavanz.Domain.Movie;
 public interface OnMovieSetAvailable {
     public void OnMovieSetAvailable(ArrayList<Movie> movies);
 }
+
