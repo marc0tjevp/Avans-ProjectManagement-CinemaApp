@@ -3,11 +3,16 @@ package nl.marcovp.avans.cavanz.Controller;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Domain.Hall;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
+import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.R;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -28,8 +33,6 @@ public class PaymentActivity extends AppCompatActivity {
         // TODO: Get Showing from intent.
         Showing s = new Showing(m, "05-05-2018", new Hall(1, 5, 5), "11:30", "13:10");
 
-        // Fill textviews
-
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
         TextView textViewStartTime = findViewById(R.id.payment_textview_starttime);
@@ -42,8 +45,24 @@ public class PaymentActivity extends AppCompatActivity {
         textViewEndTime.append(" " + s.getEndtime());
         textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + s.getHall().getHallNumber());
 
-        // Get Tickettypes and add to listview
+        // TODO: Get Ticket types and add them to the listview
+        // TODO: Add option to select multiple tickets
 
+        ArrayList<String> tickets = new ArrayList<>();
+        tickets.add("Type 1");
+        tickets.add("Type 2");
+        tickets.add("Type 3");
+
+        ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                tickets
+        );
+
+        listViewTickets.setAdapter(arrayAdapter);
+        
         // Realtime total price
 
         // (Send to chair intent)
