@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Avans-ProjectManagement-CinemaApp.iml" filepath="$PROJECT_DIR$/Avans-ProjectManagement-CinemaApp.iml" />
-      <module fileurl="file://E:\ProjectP3\Avans-ProjectManagement-CinemaApp\Avans-ProjectManagement-CinemaApp.iml" filepath="E:\ProjectP3\Avans-ProjectManagement-CinemaApp\Avans-ProjectManagement-CinemaApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\ProjectP3\Avans-ProjectManagement-CinemaApp\app\app.iml" filepath="E:\ProjectP3\Avans-ProjectManagement-CinemaApp\app\app.iml" />
     </modules>
   </component>
 </project>
