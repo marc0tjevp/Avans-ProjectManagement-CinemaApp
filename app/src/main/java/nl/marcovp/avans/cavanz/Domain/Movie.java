@@ -95,4 +95,6 @@ public class Movie implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
 }
+
