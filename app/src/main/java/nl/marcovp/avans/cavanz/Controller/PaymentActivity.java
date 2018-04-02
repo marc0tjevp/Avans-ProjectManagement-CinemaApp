@@ -37,7 +37,7 @@ public class PaymentActivity extends AppCompatActivity {
         // TODO: Get Movie from showing.
         Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
 
-        // TODO: Get Showing from intent.
+        // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
         showing = new Showing(m, "05-05-2018", new Hall(1, 5, 5), "11:30", "13:10");
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
@@ -69,8 +69,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         listViewTickets.setAdapter(arrayAdapter);
 
-        // TODO: Generate ticket object and intent to Chair selection
-
         listViewTickets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
@@ -79,7 +77,7 @@ public class PaymentActivity extends AppCompatActivity {
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
 
                 // Intent time
-                Intent i = new Intent(getApplicationContext(), PaymentCompletionActivity.class);
+                Intent i = new Intent(getApplicationContext(), PaymentTicketActivity.class);
 
                 i.putExtra("TICKETTYPE", tt);
                 i.putExtra("SHOWING", showing);

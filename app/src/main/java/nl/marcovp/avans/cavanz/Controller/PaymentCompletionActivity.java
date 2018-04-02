@@ -16,10 +16,5 @@ public class PaymentCompletionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_completion);
 
-        Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
-        TicketType ticketType = (TicketType) getIntent().getExtras().getSerializable("TICKETTYPE");
-
-        Toast.makeText(this, ticketType.getTicketTypeName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, showing.getMovie().getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nl.marcovp.avans.cavanz">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -45,7 +46,8 @@
         <activity android:name=".Controller.TicketActivity" />
         <activity android:name=".Controller.RecentMovieActivity" />
         <activity android:name=".Controller.PaymentCompletionActivity" />
-        <activity android:name=".Controller.MovieOfferActivity"></activity>
+        <activity android:name=".Controller.MovieOfferActivity" />
+        <activity android:name=".Controller.PaymentTicketActivity" />
     </application>
 
 </manifest>
