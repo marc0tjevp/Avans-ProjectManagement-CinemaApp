@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
             switch (item.getItemId()) {
                 case R.id.navigation_movies:
                     mTextMessage.setText(R.string.text_navbar_films);
+
                     return true;
                 case R.id.navigation_tickets:
                     mTextMessage.setText(R.string.text_navbar_tickets);
@@ -66,12 +67,29 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
 
 
-/*  /////////////////////////////DB TEST
+
+  /////////////////////////////DB TEST
        SQLiteHelper db = new SQLiteHelper(this);
+
+       
+       if (db.getAllMovies().size() == 0){
+           
         for (Movie mo :movies
                 ) {db.insertMovie(mo);
         }
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");*/
+           Log.d(TAG, "OnMovieSetAvailable: creating test data");
+           db.createTestData();
+        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
+    }else {
+           Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
+       }
+
+        Log.d(TAG, "OnMovieSetAvailable: showings planned: " + db.getAllShowings().size());
+        Log.d(TAG, "OnMovieSetAvailable: movies in db: " + db.getAllMovies().size());
+
+
+    
+
 
 
     }
