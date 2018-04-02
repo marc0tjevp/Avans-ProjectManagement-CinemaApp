@@ -75,10 +75,9 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
 
     @Override
-    public void OnMovieSetAvailable(Movie movie) {
-//        Log.d(TAG, "OnMovieSetAvailable: called");
-//        this.movies = movies;
-        movies.add(movie);
+    public void OnMovieSetAvailable(ArrayList<Movie> movies) {
+        Log.d(TAG, "OnMovieSetAvailable: called");
+        this.movies = movies;
 
 
 

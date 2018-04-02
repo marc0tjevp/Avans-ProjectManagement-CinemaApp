@@ -68,40 +68,38 @@ public class ApiHelper extends AsyncTask<Void, String, String> {
 
             for (int i = 0; i < jsonArray.length(); i++){
 
-//                Movie movie = new Movie();
-//
-//                JSONObject movieJSONObject = jsonArray.getJSONObject(i);
-//
-//                movie.setTitle(movieJSONObject.getString("title"));
-//                movie.setImageUrl("http://image.tmdb.org/t/p/w500" + movieJSONObject.getString("poster_path"));
-//                movie.setLanguage(movieJSONObject.getString("original_language"));
-//                movie.setRating(movieJSONObject.getDouble("vote_average"));
-//                movie.setSummary(movieJSONObject.getString("overview"));
-//                movie.setReleaseDate(movieJSONObject.getString("release_date"));
-//
-//                Log.d(TAG, "onPostExecute: movie added! Title: " +movie.getTitle() + "  imageUrl: " + movie.getImageUrl() + " Rating: " + movie.getRating());
-//                movies.add(movie);
+                Movie movie = new Movie();
 
                 JSONObject movieJSONObject = jsonArray.getJSONObject(i);
-                String movieTitle = movieJSONObject.getString("title");
-                String movieImageUrl = "http://image.tmdb.org/t/p/w500" +  movieJSONObject.getString("poster_path");
-                String movieLanguage = movieJSONObject.getString("original_language");
-                double movieRating = movieJSONObject.getDouble("vote_average");
-                String movieSummary = movieJSONObject.getString("overview");
-                String movieReleaseDate = movieJSONObject.getString("release_date");
 
-                Movie movie = new Movie(movieTitle,movieImageUrl,movieLanguage,movieRating,movieSummary,movieReleaseDate);
-                listener.OnMovieSetAvailable(movie);
+                movie.setTitle(movieJSONObject.getString("title"));
+                movie.setImageUrl("http://image.tmdb.org/t/p/w500" + movieJSONObject.getString("poster_path"));
+                movie.setLanguage(movieJSONObject.getString("original_language"));
+                movie.setRating(movieJSONObject.getDouble("vote_average"));
+                movie.setSummary(movieJSONObject.getString("overview"));
+                movie.setReleaseDate(movieJSONObject.getString("release_date"));
+
+                Log.d(TAG, "onPostExecute: movie added! Title: " +movie.getTitle() + "  imageUrl: " + movie.getImageUrl() + " Rating: " + movie.getRating());
+                movies.add(movie);
+
             }
 
-//            Log.d(TAG, "OnMovieSetAvailable: returning dataset");
-//            listener.OnMovieSetAvailable(movies);
-//            return;
+            Log.d(TAG, "OnMovieSetAvailable: returning dataset");
+            listener.OnMovieSetAvailable(movies);
+            return;
+
+
+
 
         }catch (JSONException j){
             Log.d(TAG, "onPostExecute: JSON Exception");
             j.getLocalizedMessage();
         }
+
+
+
+
+
     }
 
 

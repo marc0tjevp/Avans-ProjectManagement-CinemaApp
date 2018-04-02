@@ -9,5 +9,5 @@ import nl.marcovp.avans.cavanz.Domain.Movie;
  */
 
 public interface OnMovieSetAvailable {
-    public void OnMovieSetAvailable(Movie movie);
+    public void OnMovieSetAvailable(ArrayList<Movie> movies);
 }

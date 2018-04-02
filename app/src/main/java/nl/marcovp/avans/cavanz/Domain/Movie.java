@@ -16,18 +16,6 @@ public class Movie implements Serializable {
     private String language;
     private String releaseDate;
 
-    public Movie(){
-
-    }
-
-    public Movie(String title, String imageUrl, String language, double rating, String summary,String releaseDate){
-        this.title = title;
-        this.imageUrl = imageUrl;
-        this.language = language;
-        this.rating = rating;
-        this.summary = summary;
-        this.releaseDate = releaseDate;
-    }
 
 
     public String getTitle() {
