@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import nl.marcovp.avans.cavanz.R;
 import com.squareup.picasso.Picasso;
+
 /**
  * Created by Inge on 1-4-2018.
  */
@@ -66,10 +67,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d(TAG, "onCreateViewHolder: called");
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         View view = inflater.inflate(R.layout.activity_movie_offer_listitem, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
+
         return viewHolder;
     }
 
