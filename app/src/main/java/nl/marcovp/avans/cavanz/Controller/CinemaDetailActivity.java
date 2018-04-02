@@ -13,15 +13,19 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.MapView;
+
 import java.net.URI;
 
 import nl.marcovp.avans.cavanz.R;
+import nl.marcovp.avans.cavanz.Util.GoogleMapsApi;
 
 public class CinemaDetailActivity extends AppCompatActivity implements View.OnClickListener{
     private final String TAG = getClass().getSimpleName();
 
     ImageButton button;
     private TextView mTextMessage;
+    private GoogleMapsApi mapsApi;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,12 +52,12 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema_detail);
-        button = (ImageButton) findViewById(R.id.button_maps);
-        button.setOnClickListener(this);
+        MapView mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapsApi = new GoogleMapsApi(mapView,this,this);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        
     }
 
     @Override
