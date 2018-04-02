@@ -48,7 +48,8 @@ public class GoogleMapsApi implements OnMapReadyCallback{
         Address address = addresses.get(0);
         LatLng location = new LatLng(address.getLatitude(),address.getLongitude());
         googleMap.addMarker(new MarkerOptions().position(location)).setTitle("Cavanz Cinema");
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,21));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,10f));
+        Log.i(TAG,googleMap.getCameraPosition().zoom+"");
         googleMap.setOnMarkerClickListener(listener);
     }
 }
