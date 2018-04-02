@@ -28,4 +28,16 @@
         Cum sociis natoque penatibus et magnis disparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
         pretium quis, sem. Nulla consequat massa quis enim.</string>
     <string name="title_activity_payment">PaymentActivity</string>
+
+
+    <!-- String for Payment -->
+    <string name="text_payment_order">Bestellen</string>
+    <string name="text_payment_title">Titel</string>
+    <string name="text_payment_date">Datum:</string>
+    <string name="text_payment_starttime">Begintijd:</string>
+    <string name="text_payment_endtime">Eindtijd:</string>
+    <string name="text_payment_location">Locatie:</string>
+    <string name="text_payment_poster">Poster</string>
+    <string name="payment_text_hall">Zaal</string>
+
 </resources>

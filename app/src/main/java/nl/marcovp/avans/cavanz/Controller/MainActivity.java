@@ -1,5 +1,6 @@
 package nl.marcovp.avans.cavanz.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
         new ApiHelper(this).execute();
 
+
+        Intent i = new Intent(this, PaymentActivity.class);
+        startActivity(i);
 
         // Hello World!
 

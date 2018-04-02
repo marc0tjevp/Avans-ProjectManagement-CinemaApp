@@ -16,6 +16,19 @@ public class Movie {
     private String language;
     private String releaseDate;
 
+    public Movie(String title, int id, double rating, String imageUrl, String videoUrl, String summary, String language, String releaseDate) {
+        this.title = title;
+        this.id = id;
+        this.rating = rating;
+        this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
+        this.summary = summary;
+        this.language = language;
+        this.releaseDate = releaseDate;
+    }
+
+    public Movie() {
+    }
 
     public String getTitle() {
         return title;
