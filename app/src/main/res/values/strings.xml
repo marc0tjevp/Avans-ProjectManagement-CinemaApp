@@ -39,5 +39,6 @@
     <string name="text_payment_location">Locatie:</string>
     <string name="text_payment_poster">Poster</string>
     <string name="payment_text_hall">Zaal</string>
+    <string name="payment_text_overview">Controleren en Betalen</string>
 
 </resources>

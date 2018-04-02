@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nl.marcovp.avans.cavanz.Controller.PaymentCompletionActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/payment_ticket_imageview_poster"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/text_payment_poster"
+            android:cropToPadding="false"
+            android:padding="20dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/payment_ticket_textview_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_payment_title" />
+
+            <TextView
+                android:id="@+id/payment_ticket_textview_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_payment_date" />
+
+            <TextView
+                android:id="@+id/payment_ticket_textview_starttime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_payment_starttime" />
+
+            <TextView
+                android:id="@+id/payment_ticket_textview_endtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_payment_endtime"
+                tools:text="Eindtijd:" />
+
+            <TextView
+                android:id="@+id/payment_ticket_textview_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_payment_location" />
+        </LinearLayout>
+    </GridLayout>
+
+</LinearLayout>
