@@ -1,5 +1,6 @@
 package nl.marcovp.avans.cavanz.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
     private boolean searchOn = false;
 
+
+
+    private ArrayList<Movie> movies;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -72,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         new ApiHelper(this).execute();
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
         mLayoutManager = new GridLayoutManager(this,2);

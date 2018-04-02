@@ -38,4 +38,15 @@
     <string name="movie_actors">Acteurs</string>
     <string name="movie_language">Taal : </string>
 
+    <!-- String for Payment -->
+    <string name="text_payment_order">Bestellen</string>
+    <string name="text_payment_title">Titel</string>
+    <string name="text_payment_date">Datum:</string>
+    <string name="text_payment_starttime">Begintijd:</string>
+    <string name="text_payment_endtime">Eindtijd:</string>
+    <string name="text_payment_location">Locatie:</string>
+    <string name="text_payment_poster">Poster</string>
+    <string name="payment_text_hall">Zaal</string>
+    <string name="payment_text_overview">Controleren en Betalen</string>
+
 </resources>
