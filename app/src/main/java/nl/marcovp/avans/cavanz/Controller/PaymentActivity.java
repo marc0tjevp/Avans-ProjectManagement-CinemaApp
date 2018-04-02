@@ -13,6 +13,7 @@ import nl.marcovp.avans.cavanz.Domain.Hall;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.Ticket;
+import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class PaymentActivity extends AppCompatActivity {
         setTitle(R.string.text_payment_order);
 
         // TODO: Get Movie from showing.
-        Movie m = new Movie("title", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
+        Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
 
         // TODO: Get Showing from intent.
         Showing s = new Showing(m, "05-05-2018", new Hall(1, 5, 5), "11:30", "13:10");
@@ -39,33 +40,30 @@ public class PaymentActivity extends AppCompatActivity {
         TextView textViewEndTime = findViewById(R.id.payment_textview_endtime);
         TextView textViewLocation = findViewById(R.id.payment_textview_location);
 
-        textViewTitle.setText(" " + s.getMovie().getTitle());
+        textViewTitle.setText(s.getMovie().getTitle());
         textViewDate.append(" " + s.getDate());
         textViewStartTime.append(" " + s.getStarttime());
         textViewEndTime.append(" " + s.getEndtime());
         textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + s.getHall().getHallNumber());
 
-        // TODO: Get Ticket types and add them to the listview
         // TODO: Add option to select multiple tickets
 
-        ArrayList<String> tickets = new ArrayList<>();
-        tickets.add("Type 1");
-        tickets.add("Type 2");
-        tickets.add("Type 3");
+        ArrayList<TicketType> tickets = new ArrayList<>();
+        tickets.add(TicketType.TICKET_ADULT);
+        tickets.add(TicketType.TICKET_KIDS);
+        tickets.add(TicketType.TICKET_STUDENT);
 
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<TicketType> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 tickets
         );
 
         listViewTickets.setAdapter(arrayAdapter);
-        
-        // Realtime total price
 
-        // (Send to chair intent)
+        // TODO: Generate ticket object and intent to Chair selection
 
     }
 
