@@ -91,9 +91,9 @@ public class ApiHelper extends AsyncTask<Void, String, String> {
 
 
 
-        }catch (JSONException j){
+        } catch (JSONException j){
             Log.d(TAG, "onPostExecute: JSON Exception");
-                j.getLocalizedMessage();
+            j.getLocalizedMessage();
         }
 
 
@@ -162,5 +162,5 @@ public class ApiHelper extends AsyncTask<Void, String, String> {
 
 
     }
-
 }
+

@@ -3,6 +3,8 @@
     <string name="text_navbar_films">Filmaanbod</string>
     <string name="text_navbar_tickets">Tickets</string>
     <string name="text_navbar_info">Informatie</string>
+    <string name="text_navbar_search">Zoeken</string>
+    <string name="navbar_search">Zoeken</string>
 
     <!--  Strings needed for info  -->
     <string name="info_name" translatable="false">Cavanz Cinema</string>
@@ -28,4 +30,23 @@
         Cum sociis natoque penatibus et magnis disparturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
         pretium quis, sem. Nulla consequat massa quis enim.</string>
     <string name="title_activity_payment">PaymentActivity</string>
+
+    <string name="movie_title">Title</string>
+    <string name="movie_genre">Genre</string>
+    <string name="movie_release_date">Release datum</string>
+    <string name="movie_duration">Tijdsduur :  </string>
+    <string name="movie_actors">Acteurs</string>
+    <string name="movie_language">Taal : </string>
+
+    <!-- String for Payment -->
+    <string name="text_payment_order">Bestellen</string>
+    <string name="text_payment_title">Titel</string>
+    <string name="text_payment_date">Datum:</string>
+    <string name="text_payment_starttime">Begintijd:</string>
+    <string name="text_payment_endtime">Eindtijd:</string>
+    <string name="text_payment_location">Locatie:</string>
+    <string name="text_payment_poster">Poster</string>
+    <string name="payment_text_hall">Zaal</string>
+    <string name="payment_text_overview">Controleren en Betalen</string>
+
 </resources>
