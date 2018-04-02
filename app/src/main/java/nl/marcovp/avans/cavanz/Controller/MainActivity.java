@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         searchView = findViewById(R.id.search_view);
         searchView.setVisibility(View.INVISIBLE);
         searchOn = false;
-        
+
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
