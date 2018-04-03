@@ -21,11 +21,12 @@ import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
+import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 
 public class PaymentActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     private Showing showing;
-    private ArrayList<TicketType> tickets = new ArrayList<>();
+    private ArrayList<TicketType> tobuytickets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +65,16 @@ public class PaymentActivity extends AppCompatActivity {
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
         Button nextButton = findViewById(R.id.payment_button_next);
 
-        ArrayAdapter<TicketType> arrayAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                tickets
-        );
+        TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
 
-        listViewTickets.setAdapter(arrayAdapter);
+        listViewTickets.setAdapter(adapter);
 
         listViewTickets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
 
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
-                tickets.add(tt);
+                tobuytickets.add(tt);
 
                 Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
 
@@ -92,7 +89,7 @@ public class PaymentActivity extends AppCompatActivity {
                 // Intent time
                 Intent i = new Intent(getApplicationContext(), PaymentTicketActivity.class);
 
-                i.putExtra("TICKETTYPE", tickets);
+                i.putExtra("TICKETTYPE", tobuytickets);
                 i.putExtra("SHOWING", showing);
 
                 startActivity(i);

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="nl.marcovp.avans.cavanz.Controller.PaymentCompletionActivity">
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:padding="20dp">
+        android:layout_weight="2.3"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/payment_ticket_imageview_poster"
@@ -57,7 +58,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_payment_location" />
+
         </LinearLayout>
+
     </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/payment_ticket_listview_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/payment_ticket_textview_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/payment_ticket_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Voornaam"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/payment_ticket_edit_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Achternaam"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/payment_ticket_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/payment_ticket_button_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Betalen" />
+    </LinearLayout>
 
 </LinearLayout>

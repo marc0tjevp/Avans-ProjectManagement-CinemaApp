@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+
+        // Debug
+        Intent i = new Intent(this, PaymentActivity.class);
+        startActivity(i);
+
     }
 
     @Override
