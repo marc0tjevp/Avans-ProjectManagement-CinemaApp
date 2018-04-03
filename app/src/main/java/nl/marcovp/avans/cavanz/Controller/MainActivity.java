@@ -19,6 +19,7 @@ import nl.marcovp.avans.cavanz.Data.ApiHelper;
 import nl.marcovp.avans.cavanz.Data.OnMovieSetAvailable;
 import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
 import nl.marcovp.avans.cavanz.Domain.Movie;
+import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.R;
 import nl.marcovp.avans.cavanz.Util.MovieAdapter;
 
@@ -43,16 +44,15 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_movies:
-
-
 //                    mTextMessage.setText(R.string.text_navbar_films);
 
                     return true;
                 case R.id.navigation_tickets:
-//                    mTextMessage.setText(R.string.text_navbar_tickets);
+
+                    goToTicketActivity();
                     return true;
                 case R.id.navigation_info:
-//                    mTextMessage.setText(R.string.text_navbar_info);
+                    goToCinemaDetailActivity();
                     return true;
                 case R.id.navigation_search:
                     TurnSearchBar();
@@ -128,5 +128,15 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
             searchView.setVisibility(View.INVISIBLE);
             searchOn = false;
         }
+    }
+
+    private void goToTicketActivity() {
+        Intent intent = new Intent(this, TicketActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToCinemaDetailActivity() {
+        Intent intent = new Intent(this, CinemaDetailActivity.class);
+        startActivity(intent);
     }
 }

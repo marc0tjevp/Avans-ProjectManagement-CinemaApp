@@ -17,7 +17,7 @@ import java.net.URI;
 
 import nl.marcovp.avans.cavanz.R;
 
-public class CinemaDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class CinemaDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
 
     ImageButton button;
@@ -30,18 +30,19 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_movies:
-                    mTextMessage.setText(R.string.text_navbar_films);
+                    goToMainActivity();
                     return true;
                 case R.id.navigation_tickets:
-                    mTextMessage.setText(R.string.text_navbar_tickets);
+                    goToTicketActivity();
                     return true;
                 case R.id.navigation_info:
-                    mTextMessage.setText(R.string.text_navbar_info);
+                    //     mTextMessage.setText(R.string.text_navbar_info);
                     return true;
             }
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: aangeroepen");
@@ -53,16 +54,28 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        
+        navigation.setSelectedItemId(R.id.navigation_info);
+        findViewById(R.id.navigation_search).setEnabled(false);
+
     }
 
     @Override
     public void onClick(View view) {
         Uri uri = Uri.parse("google.navigation:q=" + Uri.encode("Chasséveld 15, Breda, Nederland"));
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW,uri);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
         }
+    }
+
+    private void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToTicketActivity() {
+        Intent intent = new Intent(this, TicketActivity.class);
+        startActivity(intent);
     }
 }
