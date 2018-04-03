@@ -96,7 +96,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY(`" + HALL_COLUMN_HALL_CODE + "`) )");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + MOVIE_TABLE_NAME + " ( `" +
-                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT, `" +
+                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY, `" +
                 MOVIE_COLUMN_TITLE + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_RATING + "` NUMERIC NOT NULL, `" +
                 MOVIE_COLUMN_RELEASE_DATE + "` TEXT NOT NULL, `" +
@@ -308,6 +308,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put(MOVIE_COLUMN_MOVIE_ID, movie.getId());
         contentValues.put(MOVIE_COLUMN_IMG_URL, movie.getImageUrl());
         contentValues.put(MOVIE_COLUMN_VIDEO_URL, movie.getVideoUrl());
         contentValues.put(MOVIE_COLUMN_TITLE, movie.getTitle());
