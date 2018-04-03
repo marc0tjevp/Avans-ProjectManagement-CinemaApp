@@ -9,21 +9,25 @@ import java.io.Serializable;
 public class Hall implements Serializable {
     private final String TAG = getClass().getSimpleName();
 
-    private int hallNumber;
+    private String hallNumber;
     private int seatPerRow;
     private int rowAmount;
 
-    public Hall(int hallNumber, int seatPerRow, int rowAmount) {
+
+    public Hall() {
+    }
+
+    public Hall(String hallNumber, int seatPerRow, int rowAmount) {
         this.hallNumber = hallNumber;
         this.seatPerRow = seatPerRow;
         this.rowAmount = rowAmount;
     }
 
-    public int getHallNumber() {
+    public String getHallNumber() {
         return hallNumber;
     }
 
-    public void setHallNumber(int hallNumber) {
+    public void setHallNumber(String hallNumber) {
         this.hallNumber = hallNumber;
     }
 

@@ -6,24 +6,26 @@ import java.io.Serializable;
  * Created by Sander on 3/29/2018.
  */
 
-public class Showing implements Serializable {
+public class Showing implements Serializable{
     private final String TAG = getClass().getSimpleName();
 
+    private int showID;
     private Movie movie;
+    private String startingTime;
+    private String endingTime;
     private String date;
     private Hall hall;
-    private String starttime;
-    private String endtime;
 
-    public Showing(Movie movie, String date, Hall hall, String starttime, String endtime) {
-        this.movie = movie;
-        this.date = date;
-        this.hall = hall;
-        this.starttime = starttime;
-        this.endtime = endtime;
-    }
 
     public Showing() {
+    }
+
+    public Showing(Movie movie, String startingTime, String endingTime, String date, Hall hall) {
+        this.movie = movie;
+        this.startingTime = startingTime;
+        this.endingTime = endingTime;
+        this.date = date;
+        this.hall = hall;
     }
 
     public Movie getMovie() {
@@ -32,6 +34,22 @@ public class Showing implements Serializable {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public String getStartingTime() {
+        return startingTime;
+    }
+
+    public void setStartingTime(String startingTime) {
+        this.startingTime = startingTime;
+    }
+
+    public String getEndingTime() {
+        return endingTime;
+    }
+
+    public void setEndingTime(String endingTime) {
+        this.endingTime = endingTime;
     }
 
     public String getDate() {
@@ -50,19 +68,15 @@ public class Showing implements Serializable {
         this.hall = hall;
     }
 
-    public String getStarttime() {
-        return starttime;
+    public int getShowID() {
+        return showID;
     }
 
-    public void setStarttime(String starttime) {
-        this.starttime = starttime;
+    public void setShowID(int showID) {
+        this.showID = showID;
     }
 
-    public String getEndtime() {
-        return endtime;
-    }
 
-    public void setEndtime(String endtime) {
-        this.endtime = endtime;
-    }
+
+
 }
