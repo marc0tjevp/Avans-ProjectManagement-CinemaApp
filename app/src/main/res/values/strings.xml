@@ -38,7 +38,7 @@
     <string name="movie_actors">Acteurs</string>
     <string name="movie_language">Taal : </string>
 
-    <!-- String for Payment -->
+    <!-- Strings for Payment -->
     <string name="text_payment_order">Bestellen</string>
     <string name="text_payment_title">Titel</string>
     <string name="text_payment_date">Datum:</string>
@@ -46,7 +46,12 @@
     <string name="text_payment_endtime">Eindtijd:</string>
     <string name="text_payment_location">Locatie:</string>
     <string name="text_payment_poster">Poster</string>
-    <string name="payment_text_hall">Zaal</string>
-    <string name="payment_text_overview">Controleren en Betalen</string>
+    <string name="text_payment_hall">Zaal</string>
+    <string name="text_payment_overview">Controleren en Betalen</string>
+    <string name="text_payment_completed_title">Bedankt voor uw bestelling!</string>
+    <string name="text_payment_completed_explanation">De tickets zijn naar het opgegeven e-mail adres verstuurd. Print deze voor uw bezoek aan de bioscoop uit of download uw e-ticket om deze op te slaan op uw apparaat.</string>
+    <string name="text_payment_completed_download">Download E-Ticket</string>
+    <string name="text_payment_failed_title">Betaling is geannuleerd</string>
+    <string name="text_payment_failed_explanation">Er is een fout opgetreden tijdens de betaling of u heeft de betaling geannuleerd. U kunt proberen opnieuw te betalen door terug te gaan naar de detailpagina van de gekozen film.</string>
 
 </resources>

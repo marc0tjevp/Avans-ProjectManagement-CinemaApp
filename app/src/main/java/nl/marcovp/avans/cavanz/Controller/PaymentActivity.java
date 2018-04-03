@@ -6,21 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import nl.marcovp.avans.cavanz.Data.DataHelper;
-import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
 import nl.marcovp.avans.cavanz.Domain.Hall;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
-import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
 import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
@@ -55,8 +50,8 @@ public class PaymentActivity extends AppCompatActivity {
         textViewDate.append(" " + showing.getDate());
         textViewStartTime.append(" " + showing.getStartingTime());
         textViewEndTime.append(" " + showing.getEndingTime());
-        textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
-        
+        textViewLocation.append(" " + getString(R.string.text_payment_hall) + " " + showing.getHall().getHallNumber());
+
         final ArrayList<TicketType> tickets = new ArrayList<>();
         tickets.add(TicketType.TICKET_ADULT);
         tickets.add(TicketType.TICKET_KIDS);

@@ -2,17 +2,13 @@ package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Domain.Showing;
@@ -30,7 +26,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_ticket);
 
-        setTitle(getString(R.string.payment_text_overview));
+        setTitle(getString(R.string.text_payment_overview));
 
         final Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         final ArrayList<TicketType> ticketType = (ArrayList<TicketType>) getIntent().getExtras().getSerializable("TICKETTYPE");
@@ -48,7 +44,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
         textViewDate.append(" " + showing.getDate());
         textViewStartTime.append(" " + showing.getStartingTime());
         textViewEndTime.append(" " + showing.getEndingTime());
-        textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
+        textViewLocation.append(" " + getString(R.string.text_payment_hall) + " " + showing.getHall().getHallNumber());
 
         ListView listViewTickets = findViewById(R.id.payment_ticket_listview_tickets);
         TicketTypeAdapter adapter = new TicketTypeAdapter(this, ticketType);
