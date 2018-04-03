@@ -135,10 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
             Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
         }
 
-        ////////////////EXCLUDE IN PRODUCTION
-        Log.d(TAG, "OnMovieSetAvailable: showings planned: " + db.getAllShowings().size());
-        Log.d(TAG, "OnMovieSetAvailable: movies in db: " + db.getAllMovies().size());
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
+        
 
             db.close();
 
