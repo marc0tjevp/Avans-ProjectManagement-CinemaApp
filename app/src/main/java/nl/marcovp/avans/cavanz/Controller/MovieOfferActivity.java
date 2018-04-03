@@ -14,7 +14,7 @@ public class MovieOfferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_offer_listitem);
 
-        Button button = new Button(this,null,1,1);
+
 
     }
 }

@@ -82,6 +82,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+
         sqLiteDatabase.execSQL("CREATE TABLE " + CUSTOMER_TABLE_NAME + " " +
                 "( `" + CUSTOMER_COLUMN_CUSTOMERID + "` INTEGER, `" +
                 CUSTOMER_COLUMN_NAME + "` TEXT NOT NULL, `" +
@@ -95,7 +96,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY(`" + HALL_COLUMN_HALL_CODE + "`) )");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + MOVIE_TABLE_NAME + " ( `" +
-                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT, `" +
+                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY, `" +
                 MOVIE_COLUMN_TITLE + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_RATING + "` NUMERIC NOT NULL, `" +
                 MOVIE_COLUMN_RELEASE_DATE + "` TEXT NOT NULL, `" +
@@ -116,11 +117,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("CREATE TABLE " + SHOWING_TABLE_NAME + " " +
                 "( `" + SHOWING_COLUMN_SHOW_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT, `" +
-                SHOWING_COLUMN_DATE + "` INTEGER NOT NULL, `" +
-                SHOWING_COLUMN_STARTING_TIME + "` INTEGER NOT NULL, `" +
-                SHOWING_COLUMN_ENDING_TIME + "` INTEGER NOT NULL, `" +
-                SHOWING_COLUMN_MOVIE_ID + "` INTEGER NOT NULL, `" +
-                SHOWING_COLUMN_HALL_CODE + "` INTEGER NOT NULL, " +
+                SHOWING_COLUMN_DATE + "` TEXT NOT NULL, `" +
+                SHOWING_COLUMN_STARTING_TIME + "` TEXT NOT NULL, `" +
+                SHOWING_COLUMN_ENDING_TIME + "` TEXT NOT NULL, `" +
+                SHOWING_COLUMN_MOVIE_ID + "` TEXT NOT NULL, `" +
+                SHOWING_COLUMN_HALL_CODE + "` TEXT NOT NULL, " +
                 //    "PRIMARY KEY(`" + SHOWING_COLUMN_SHOW_ID + "`), " +
                 "FOREIGN KEY(`" + SHOWING_COLUMN_HALL_CODE + "`) " +
                 "REFERENCES `" + HALL_TABLE_NAME + "`(`" + HALL_COLUMN_HALL_CODE + "`), " +
@@ -269,12 +270,45 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return array_list;
     }
 
+    public ArrayList<Showing> getAllShowingsFor(int MovieID) {
+        Log.d(TAG, "getAllShowings: called");
+        ArrayList<Showing> array_list = new ArrayList<Showing>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + SHOWING_TABLE_NAME + " WHERE " + SHOWING_COLUMN_MOVIE_ID + " = '" + MovieID + "';" , null);
+        res.moveToFirst();
+
+
+        while (res.isAfterLast() == false) {
+
+            Showing showing = new Showing();
+
+
+            //////////Putting values in the showing
+
+            showing.setShowID(res.getInt(res.getColumnIndex(SHOWING_COLUMN_SHOW_ID)));
+            showing.setMovie(getMovie(res.getString(res.getColumnIndex(SHOWING_COLUMN_MOVIE_ID))));
+            showing.setHall(getHall(res.getString(res.getColumnIndex(SHOWING_COLUMN_HALL_CODE))));
+            showing.setStartingTime(res.getString(res.getColumnIndex(SHOWING_COLUMN_STARTING_TIME)));
+            showing.setEndingTime(res.getString(res.getColumnIndex(SHOWING_COLUMN_ENDING_TIME)));
+            showing.setDate(res.getString(res.getColumnIndex(SHOWING_COLUMN_DATE)));
+
+            array_list.add(showing);
+            res.moveToNext();
+
+        }
+        ///////////array containing all movies in db
+        close();
+        return array_list;
+    }
+
     public boolean insertMovie(Movie movie) {
         Log.d(TAG, "insertMovie: called");
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put(MOVIE_COLUMN_MOVIE_ID, movie.getId());
         contentValues.put(MOVIE_COLUMN_IMG_URL, movie.getImageUrl());
         contentValues.put(MOVIE_COLUMN_VIDEO_URL, movie.getVideoUrl());
         contentValues.put(MOVIE_COLUMN_TITLE, movie.getTitle());
@@ -284,7 +318,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(MOVIE_COLUMN_LANGAUGE, movie.getLanguage());
 
 
-        Log.d(TAG, "insertMovie: " + movie.getTitle());
+        Log.d(TAG, "insertMovie: " + movie.getTitle() + " ID:(" + movie.getId() + ")");
 
 
         db.insert(MOVIE_TABLE_NAME,
@@ -308,7 +342,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(SHOWING_COLUMN_MOVIE_ID, showing.getMovie().getId());
 
 
-        Log.d(TAG, "insertShowing: " + showing.getMovie().getTitle() + " FOR " + showing.getDate() + " IN " + showing.getHall().getHallNumber() + " BETWEEN " + showing.getStartingTime() + " AND " + showing.getEndingTime());
+        Log.d(TAG, "insertShowing: " + showing.getMovie().getTitle() + " ID:("+showing.getMovie().getId()+") " + " FOR " + showing.getDate() + " IN " + showing.getHall().getHallNumber() + " BETWEEN " + showing.getStartingTime() + " AND " + showing.getEndingTime());
 
 
         db.insert(SHOWING_TABLE_NAME,

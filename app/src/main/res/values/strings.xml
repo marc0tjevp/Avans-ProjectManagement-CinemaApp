@@ -48,5 +48,6 @@
     <string name="text_payment_poster">Poster</string>
     <string name="payment_text_hall">Zaal</string>
     <string name="payment_text_overview">Controleren en Betalen</string>
+    <string name="OrderNowButton">Bestel nu!</string>
 
 </resources>
