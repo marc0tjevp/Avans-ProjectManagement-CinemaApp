@@ -1,8 +1,10 @@
 package nl.marcovp.avans.cavanz.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -27,6 +29,8 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_movie_detail);
 
 
+        Button orderButton = (Button) findViewById(R.id.Movie_Detail_OrderNow);
+
         ImageView poster = findViewById(R.id.iv_movie_detail_image);
         TextView title = findViewById(R.id.tv_movie_detail_title);
 //        TextView genre = findViewById(R.id.tv_movie_detail_genre);
@@ -39,7 +43,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 
 
         Bundle extras = getIntent().getExtras();
-        Movie movie = (Movie) extras.getSerializable("MOVIE");
+        final Movie movie = (Movie) extras.getSerializable("MOVIE");
 
         //Turn double rating to int rating
         Double dRating = movie.getRating();
@@ -55,6 +59,19 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
         language.setText(movie.getLanguage());
         ratingBar.setProgress(iRating);
         movieDuration.setText(placeholderDuration);
+
+        orderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ShowSelectionActivity.class);
+
+                intent.putExtra("MOVIE" , movie);
+                startActivity(intent);
+
+
+            }
+        });
+
 
     }
 

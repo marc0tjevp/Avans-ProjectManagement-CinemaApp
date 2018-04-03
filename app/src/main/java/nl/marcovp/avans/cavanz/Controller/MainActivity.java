@@ -69,8 +69,26 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         Log.d(TAG, "onCreate: called");
 
         searchView = findViewById(R.id.search_view);
-        searchView.setVisibility(View.INVISIBLE);
-        searchOn = false;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                for(Movie m : movies){
+                    if(m.getTitle().toLowerCase().contains(s.toLowerCase())){
+                        System.out.println("Found: " + m.getTitle().toString());
+                        Intent detailIntent = new Intent(searchView.getContext().getApplicationContext(),MovieDetailActivity.class);
+                        detailIntent.putExtra("MOVIE", m);
+                        startActivity(detailIntent);
+                        break;
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

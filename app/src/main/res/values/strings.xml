@@ -57,5 +57,8 @@
     <string name="text_payment_error_whathappened">Er is helaas iets fout gegaan, probeer het opnieuw.</string>
     <string name="text_permissions_internal_storage">Om E-Tickets op te slaan heeft deze app toegang nodig tot het bestandssysteem van uw telefoon.</string>
     <string name="text_permissions_allow">Toestaan</string>
+    <string name="payment_text_hall">Zaal</string>
+    <string name="payment_text_overview">Controleren en Betalen</string>
+    <string name="OrderNowButton">Bestel nu!</string>
 
 </resources>

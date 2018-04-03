@@ -72,6 +72,7 @@ public class ApiHelper extends AsyncTask<Void, String, String> {
 
                 JSONObject movieJSONObject = jsonArray.getJSONObject(i);
 
+                movie.setId(Integer.parseInt(movieJSONObject.getString("id")));
                 movie.setTitle(movieJSONObject.getString("title"));
                 movie.setImageUrl("http://image.tmdb.org/t/p/w500" + movieJSONObject.getString("poster_path"));
                 movie.setLanguage(movieJSONObject.getString("original_language"));
