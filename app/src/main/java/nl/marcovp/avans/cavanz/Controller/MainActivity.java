@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
             Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
         }
 
-        
+
 
             db.close();
 
