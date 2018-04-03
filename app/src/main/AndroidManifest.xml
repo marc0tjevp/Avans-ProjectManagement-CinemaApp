@@ -3,7 +3,7 @@
     package="nl.marcovp.avans.cavanz">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,28 +17,11 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Controller.CinemaDetailActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Controller.MovieDetailActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Controller.CinemaDetailActivity"></activity>
+        <activity android:name=".Controller.MovieDetailActivity"></activity>
         <activity
             android:name=".Controller.PaymentActivity"
             android:label="@string/title_activity_payment"
@@ -49,7 +32,8 @@
         <activity android:name=".Controller.PaymentCompletionActivity" />
         <activity android:name=".Controller.MovieOfferActivity" />
         <activity android:name=".Controller.PaymentTicketActivity" />
-        <activity android:name=".Controller.ShowSelectionActivity"></activity>
+        <activity android:name=".Controller.PaymentProviderActivity" />
+        <activity android:name=".Controller.ShowSelectionActivity"/>
     </application>
 
 </manifest>

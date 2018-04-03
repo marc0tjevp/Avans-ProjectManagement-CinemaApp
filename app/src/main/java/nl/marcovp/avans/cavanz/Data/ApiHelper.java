@@ -80,7 +80,7 @@ public class ApiHelper extends AsyncTask<Void, String, String> {
                 movie.setSummary(movieJSONObject.getString("overview"));
                 movie.setReleaseDate(movieJSONObject.getString("release_date"));
 
-                Log.d(TAG, "onPostExecute: movie added! Title: " +movie.getTitle() + "  imageUrl: " + movie.getImageUrl() + " Rating: " + movie.getRating());
+                Log.d(TAG, "onPostExecute: movie added! Title: " +movie.getTitle() + "  imageUrl: " + movie.getImageUrl() + " Rating: " + movie.getRating() + " ID: " + movie.getId());
                 movies.add(movie);
 
             }
