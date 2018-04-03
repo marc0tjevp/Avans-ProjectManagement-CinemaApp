@@ -61,9 +61,10 @@ public class PaymentActivity extends AppCompatActivity {
         final Button nextButton = findViewById(R.id.payment_button_next);
         final Button clearButton = findViewById(R.id.payment_button_clear);
         final Button cancelButton = findViewById(R.id.payment_button_cancel);
+        final TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
+
         nextButton.setEnabled(false);
 
-        TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
 
         listViewTickets.setAdapter(adapter);
 
@@ -102,8 +103,10 @@ public class PaymentActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tickets.size() < 1) {
+                if (tickets.size() >= 1) {
                     tickets.clear();
+                    nextButton.setEnabled(false);
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(PaymentActivity.this, "Selectie ongedaan gemaakt", Toast.LENGTH_SHORT).show();
                 }
             }

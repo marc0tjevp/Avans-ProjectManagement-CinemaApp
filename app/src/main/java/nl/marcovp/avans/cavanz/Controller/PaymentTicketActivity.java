@@ -1,5 +1,7 @@
 package nl.marcovp.avans.cavanz.Controller;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,9 +33,6 @@ public class PaymentTicketActivity extends AppCompatActivity {
         final Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         final ArrayList<TicketType> ticketType = (ArrayList<TicketType>) getIntent().getExtras().getSerializable("TICKETTYPE");
 
-        // TODO: Use User input to generate ticket and intent to payment
-        // TODO: Get Ticket types from array
-
         TextView textViewTitle = findViewById(R.id.payment_ticket_textview_title);
         TextView textViewDate = findViewById(R.id.payment_ticket_textview_date);
         TextView textViewStartTime = findViewById(R.id.payment_ticket_textview_starttime);
@@ -59,25 +58,75 @@ public class PaymentTicketActivity extends AppCompatActivity {
         final EditText editTextEmail = findViewById(R.id.payment_ticket_edit_email);
 
         Button paymentButton = findViewById(R.id.payment_ticket_button_next);
+        Button cancelButton = findViewById(R.id.payment_ticket_button_cancel);
 
         paymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String name = String.valueOf(editTextName.getText());
                 String surname = String.valueOf(editTextSurname.getText());
                 String email = String.valueOf(editTextEmail.getText());
 
-                Ticket t = new Ticket(0, 0, showing, name, surname, email, ticketPrice);
+                if (editTextName.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Naam is een verplicht veld.");
+                    builder1.setCancelable(true);
 
-                // TODO: Start payment intent and generate the ticket as pdf.
-                // TODO: Save the ticket to the database.
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
 
-                Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
+                } else if (editTextSurname.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Achternaam is een verplicht veld.");
+                    builder1.setCancelable(true);
 
-                i.putExtra("TICKET", t);
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else if (editTextEmail.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Email is een verplicht veld.");
+                    builder1.setCancelable(true);
 
-                startActivity(i);
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else {
+                    Ticket t = new Ticket(0, 0, showing, name, surname, email, ticketPrice);
 
+                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
+                    i.putExtra("TICKET", t);
+                    startActivity(i);
+                }
+
+
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

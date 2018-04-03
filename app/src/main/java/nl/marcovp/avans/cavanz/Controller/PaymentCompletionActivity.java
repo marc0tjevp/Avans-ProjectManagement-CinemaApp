@@ -52,8 +52,6 @@ public class PaymentCompletionActivity extends AppCompatActivity {
 
             // TODO: Insert ticket into database.
 
-            // TODO: Generate PDF
-
             final Ticket finalT = t;
             buttonDownload.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,10 +60,10 @@ public class PaymentCompletionActivity extends AppCompatActivity {
                     if (PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(PaymentCompletionActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                         PDFGenerator pdf = new PDFGenerator();
                         pdf.createDocument(finalT);
+                        Toast.makeText(PaymentCompletionActivity.this, R.string.text_payment_completed_ticketsaved, Toast.LENGTH_SHORT).show();
                     } else {
                         requestWritePermission(PaymentCompletionActivity.this);
                     }
-
 
                 }
             });
@@ -78,7 +76,7 @@ public class PaymentCompletionActivity extends AppCompatActivity {
             t = null;
 
         } else {
-            Toast.makeText(this, "Something went wrong :(, try again later", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.text_payment_error_whathappened, Toast.LENGTH_SHORT).show();
 
             t = null;
         }
@@ -88,8 +86,8 @@ public class PaymentCompletionActivity extends AppCompatActivity {
     private static void requestWritePermission(final Context context) {
         if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             new AlertDialog.Builder(context)
-                    .setMessage("This app needs permission to use this devices interal storage to save files.")
-                    .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+                    .setMessage(R.string.text_permissions_internal_storage)
+                    .setPositiveButton(R.string.text_permissions_allow, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);

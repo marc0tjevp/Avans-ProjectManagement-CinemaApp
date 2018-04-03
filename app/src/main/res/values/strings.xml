@@ -53,5 +53,9 @@
     <string name="text_payment_completed_download">Download E-Ticket</string>
     <string name="text_payment_failed_title">Betaling is geannuleerd</string>
     <string name="text_payment_failed_explanation">Er is een fout opgetreden tijdens de betaling of u heeft de betaling geannuleerd. U kunt proberen opnieuw te betalen door terug te gaan naar de detailpagina van de gekozen film.</string>
+    <string name="text_payment_completed_ticketsaved">E-Ticket is opgeslagen in downloads folder</string>
+    <string name="text_payment_error_whathappened">Something went wrong :(, try again later</string>
+    <string name="text_permissions_internal_storage">This app needs permission to use this devices interal storage to save files.</string>
+    <string name="text_permissions_allow">Toestaan</string>
 
 </resources>
