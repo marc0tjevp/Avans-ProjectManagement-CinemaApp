@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <TextView
+                <TextView
                 android:id="@+id/tv_movie_detail_language"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
@@ -142,7 +142,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_description" />
 
-            <TextView
+                <TextView
                 android:id="@+id/tv_movie_detail_language_select"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -152,8 +152,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_language" />
+
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Button"
+                    android:visibility="visible" />
+
+
             </LinearLayout>
         </LinearLayout>
+
+
+
+
     </ScrollView>
 
 
