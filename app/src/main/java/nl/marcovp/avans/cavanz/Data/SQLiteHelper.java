@@ -96,7 +96,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY(`" + HALL_COLUMN_HALL_CODE + "`) )");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + MOVIE_TABLE_NAME + " ( `" +
-                MOVIE_COLUMN_MOVIE_ID + "` TEXT PRIMARY KEY AUTOINCREMENT, `" +
+                MOVIE_COLUMN_MOVIE_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT, `" +
                 MOVIE_COLUMN_TITLE + "` TEXT NOT NULL, `" +
                 MOVIE_COLUMN_RATING + "` NUMERIC NOT NULL, `" +
                 MOVIE_COLUMN_RELEASE_DATE + "` TEXT NOT NULL, `" +
@@ -317,7 +317,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(MOVIE_COLUMN_LANGAUGE, movie.getLanguage());
 
 
-        Log.d(TAG, "insertMovie: " + movie.getTitle());
+        Log.d(TAG, "insertMovie: " + movie.getTitle() + " ID:(" + movie.getId() + ")");
 
 
         db.insert(MOVIE_TABLE_NAME,
@@ -341,7 +341,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(SHOWING_COLUMN_MOVIE_ID, showing.getMovie().getId());
 
 
-        Log.d(TAG, "insertShowing: " + showing.getMovie().getTitle() + " FOR " + showing.getDate() + " IN " + showing.getHall().getHallNumber() + " BETWEEN " + showing.getStartingTime() + " AND " + showing.getEndingTime());
+        Log.d(TAG, "insertShowing: " + showing.getMovie().getTitle() + " ID:("+showing.getMovie().getId()+") " + " FOR " + showing.getDate() + " IN " + showing.getHall().getHallNumber() + " BETWEEN " + showing.getStartingTime() + " AND " + showing.getEndingTime());
 
 
         db.insert(SHOWING_TABLE_NAME,
