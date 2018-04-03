@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import nl.marcovp.avans.cavanz.R;
 public class PaymentActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     private Showing showing;
+    private ArrayList<TicketType> tickets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class PaymentActivity extends AppCompatActivity {
         Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
 
         // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
-        showing = new Showing(m,"12:00","14:30","2018-04-05",new Hall("1",15,25));
+        showing = new Showing(m, "12:00", "14:30", "2018-04-05", new Hall("1", 15, 25));
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
@@ -54,12 +56,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         // TODO: Add option to select multiple tickets via arrayadapter
 
-        ArrayList<TicketType> tickets = new ArrayList<>();
+        final ArrayList<TicketType> tickets = new ArrayList<>();
         tickets.add(TicketType.TICKET_ADULT);
         tickets.add(TicketType.TICKET_KIDS);
         tickets.add(TicketType.TICKET_STUDENT);
 
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
+        Button nextButton = findViewById(R.id.payment_button_next);
 
         ArrayAdapter<TicketType> arrayAdapter = new ArrayAdapter<>(
                 this,
@@ -73,20 +76,30 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
 
-                // Get TicketType
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
+                tickets.add(tt);
+
+                Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
                 // Intent time
                 Intent i = new Intent(getApplicationContext(), PaymentTicketActivity.class);
 
-                i.putExtra("TICKETTYPE", tt);
+                i.putExtra("TICKETTYPE", tickets);
                 i.putExtra("SHOWING", showing);
 
                 startActivity(i);
 
             }
-
         });
+
 
     }
 }

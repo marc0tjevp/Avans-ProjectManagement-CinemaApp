@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
@@ -20,12 +23,10 @@ public class PaymentTicketActivity extends AppCompatActivity {
         setTitle(getString(R.string.payment_text_overview));
 
         Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
-        TicketType ticketType = (TicketType) getIntent().getExtras().getSerializable("TICKETTYPE");
-
-        Toast.makeText(this, ticketType.getTicketTypeName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, showing.getMovie().getTitle(), Toast.LENGTH_SHORT).show();
+        ArrayList<TicketType> ticketType = (ArrayList<TicketType>) getIntent().getExtras().getSerializable("TICKETTYPE");
 
         // TODO: Use User input to generate ticket and intent to payment
+        // TODO: Get Ticket types from array
 
         TextView textViewTitle = findViewById(R.id.payment_ticket_textview_title);
         TextView textViewDate = findViewById(R.id.payment_ticket_textview_date);
