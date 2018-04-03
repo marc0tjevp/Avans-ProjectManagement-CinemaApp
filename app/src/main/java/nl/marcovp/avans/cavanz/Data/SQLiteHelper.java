@@ -430,7 +430,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
             for (int i = 0; i < 5; i++) {
                 Hall hall = new Hall();
-                hall.setHallNumber("" + i);
+                hall.setHallNumber("" + (i+1));
                 hall.setRowAmount((7) + (i * 2));
                 hall.setSeatPerRow(7 + (i * 2));
                 insertHall(hall);
