@@ -58,7 +58,8 @@ public class PaymentActivity extends AppCompatActivity {
         tickets.add(TicketType.TICKET_STUDENT);
 
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
-        Button nextButton = findViewById(R.id.payment_button_next);
+        final Button nextButton = findViewById(R.id.payment_button_next);
+        nextButton.setEnabled(false);
 
         TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
 
@@ -67,6 +68,10 @@ public class PaymentActivity extends AppCompatActivity {
         listViewTickets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
+
+                if (tobuytickets.size() > 1) {
+                    nextButton.setEnabled(true);
+                }
 
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
                 tobuytickets.add(tt);
