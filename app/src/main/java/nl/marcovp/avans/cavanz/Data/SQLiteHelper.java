@@ -302,6 +302,36 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return array_list;
     }
 
+    public Showing getShowing(String showID) {
+        Log.d(TAG, "getAllShowings: called");
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + SHOWING_TABLE_NAME + " WHERE " + SHOWING_COLUMN_SHOW_ID + " = '" + showID + "';" , null);
+        res.moveToFirst();
+
+
+
+
+            Showing showing = new Showing();
+
+
+            //////////Putting values in the showing
+
+            showing.setShowID(res.getInt(res.getColumnIndex(SHOWING_COLUMN_SHOW_ID)));
+            showing.setMovie(getMovie(res.getString(res.getColumnIndex(SHOWING_COLUMN_MOVIE_ID))));
+            showing.setHall(getHall(res.getString(res.getColumnIndex(SHOWING_COLUMN_HALL_CODE))));
+            showing.setStartingTime(res.getString(res.getColumnIndex(SHOWING_COLUMN_STARTING_TIME)));
+            showing.setEndingTime(res.getString(res.getColumnIndex(SHOWING_COLUMN_ENDING_TIME)));
+            showing.setDate(res.getString(res.getColumnIndex(SHOWING_COLUMN_DATE)));
+
+
+
+        ///////////array containing all movies in db
+        close();
+        return showing;
+    }
+
     public boolean insertMovie(Movie movie) {
         Log.d(TAG, "insertMovie: called");
         SQLiteDatabase db = this.getWritableDatabase();

@@ -55,7 +55,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_info);
-        findViewById(R.id.navigation_search).setEnabled(false);
+
 
     }
 

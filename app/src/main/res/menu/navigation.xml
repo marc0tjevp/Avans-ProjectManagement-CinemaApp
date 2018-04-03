@@ -16,10 +16,4 @@
         android:icon="@drawable/drawable_navigation_info"
         android:title="@string/text_navbar_info" />
 
-    <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/text_navbar_search"
-        />
-
 </menu>

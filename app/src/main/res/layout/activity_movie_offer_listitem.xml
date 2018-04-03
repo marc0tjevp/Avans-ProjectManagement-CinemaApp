@@ -8,17 +8,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/movie_offer_filmtitle"
-            android:text="Filmtitel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
         <ImageView
             android:id="@+id/movie_offer_filmposter"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:layout_height="220dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/movie_offer_filmtitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Filmtitel"
+            android:textAlignment="center" />
+
+
+
+
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -92,6 +93,19 @@ public class ShowSelectionActivity extends AppCompatActivity implements OnDataSe
                  Button showButton = new Button(this);
                  showButton.setText(showing.getStartingTime() + "\n Zaal: " + showing.getHall().getHallNumber());
                  showingLL.addView(showButton);
+                 showButton.setTransitionName("" +showing.getShowID());
+
+                 showButton.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View view) {
+                            Button button = (Button) view;
+
+                         Intent intent = new Intent(button.getContext(), PaymentActivity.class);
+                         intent.putExtra("SHOWING",button.getTransitionName());
+                         startActivity(intent);
+
+                     }
+                 });
         }
 
         }

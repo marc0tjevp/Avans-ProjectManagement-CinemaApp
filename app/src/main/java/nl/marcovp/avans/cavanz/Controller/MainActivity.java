@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
                 case R.id.navigation_info:
                     goToCinemaDetailActivity();
                     return true;
-                case R.id.navigation_search:
-                    TurnSearchBar();
-                    break;
             }
             return false;
         }

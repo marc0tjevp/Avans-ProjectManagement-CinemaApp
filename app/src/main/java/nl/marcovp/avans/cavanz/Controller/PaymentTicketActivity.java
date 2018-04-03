@@ -2,8 +2,11 @@ package nl.marcovp.avans.cavanz.Controller;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
@@ -26,6 +29,9 @@ public class PaymentTicketActivity extends AppCompatActivity {
         Toast.makeText(this, showing.getMovie().getTitle(), Toast.LENGTH_SHORT).show();
 
         // TODO: Use User input to generate ticket and intent to payment
+
+        ImageView imageView = findViewById(R.id.payment_ticket_imageview_poster);
+        Picasso.with(this).load(showing.getMovie().getImageUrl()).into(imageView);
 
         TextView textViewTitle = findViewById(R.id.payment_ticket_textview_title);
         TextView textViewDate = findViewById(R.id.payment_ticket_textview_date);
