@@ -6,24 +6,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Domain.Hall;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
-import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
+import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 
 public class PaymentActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     private Showing showing;
+    private ArrayList<TicketType> tobuytickets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class PaymentActivity extends AppCompatActivity {
         Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
 
         // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
-        showing = new Showing(m,"12:00","14:30","2018-04-05",new Hall("1",15,25));
+        showing = new Showing(m, "12:00", "14:30", "2018-04-05", new Hall("1", 15, 25));
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
@@ -50,43 +50,75 @@ public class PaymentActivity extends AppCompatActivity {
         textViewDate.append(" " + showing.getDate());
         textViewStartTime.append(" " + showing.getStartingTime());
         textViewEndTime.append(" " + showing.getEndingTime());
-        textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
+        textViewLocation.append(" " + getString(R.string.text_payment_hall) + " " + showing.getHall().getHallNumber());
 
-        // TODO: Add option to select multiple tickets via arrayadapter
-
-        ArrayList<TicketType> tickets = new ArrayList<>();
+        final ArrayList<TicketType> tickets = new ArrayList<>();
         tickets.add(TicketType.TICKET_ADULT);
         tickets.add(TicketType.TICKET_KIDS);
         tickets.add(TicketType.TICKET_STUDENT);
 
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
+        final Button nextButton = findViewById(R.id.payment_button_next);
+        final Button clearButton = findViewById(R.id.payment_button_clear);
+        final Button cancelButton = findViewById(R.id.payment_button_cancel);
+        final TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
 
-        ArrayAdapter<TicketType> arrayAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                tickets
-        );
+        nextButton.setEnabled(false);
 
-        listViewTickets.setAdapter(arrayAdapter);
+
+        listViewTickets.setAdapter(adapter);
 
         listViewTickets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
 
-                // Get TicketType
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
+                tobuytickets.add(tt);
+
+                if (tobuytickets.size() >= 1) {
+                    nextButton.setEnabled(true);
+                }
+
+                Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
                 // Intent time
                 Intent i = new Intent(getApplicationContext(), PaymentTicketActivity.class);
 
-                i.putExtra("TICKETTYPE", tt);
+                i.putExtra("TICKETTYPE", tobuytickets);
                 i.putExtra("SHOWING", showing);
 
                 startActivity(i);
 
             }
-
         });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tobuytickets.size() >= 1) {
+                    tobuytickets.clear();
+                    nextButton.setEnabled(false);
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(PaymentActivity.this, "Selectie ongedaan gemaakt", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
     }
 }

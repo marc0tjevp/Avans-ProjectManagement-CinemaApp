@@ -1,31 +1,37 @@
 package nl.marcovp.avans.cavanz.Controller;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Domain.Showing;
+import nl.marcovp.avans.cavanz.Domain.Ticket;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
+import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 
 public class PaymentTicketActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
+    double ticketPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_ticket);
 
-        setTitle(getString(R.string.payment_text_overview));
+        setTitle(getString(R.string.text_payment_overview));
 
-        Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
-        TicketType ticketType = (TicketType) getIntent().getExtras().getSerializable("TICKETTYPE");
-
-        Toast.makeText(this, ticketType.getTicketTypeName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, showing.getMovie().getTitle(), Toast.LENGTH_SHORT).show();
-
-        // TODO: Use User input to generate ticket and intent to payment
+        final Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
+        final ArrayList<TicketType> ticketType = (ArrayList<TicketType>) getIntent().getExtras().getSerializable("TICKETTYPE");
 
         TextView textViewTitle = findViewById(R.id.payment_ticket_textview_title);
         TextView textViewDate = findViewById(R.id.payment_ticket_textview_date);
@@ -37,7 +43,91 @@ public class PaymentTicketActivity extends AppCompatActivity {
         textViewDate.append(" " + showing.getDate());
         textViewStartTime.append(" " + showing.getStartingTime());
         textViewEndTime.append(" " + showing.getEndingTime());
-        textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
+        textViewLocation.append(" " + getString(R.string.text_payment_hall) + " " + showing.getHall().getHallNumber());
 
+        ListView listViewTickets = findViewById(R.id.payment_ticket_listview_tickets);
+        TicketTypeAdapter adapter = new TicketTypeAdapter(this, ticketType);
+        listViewTickets.setAdapter(adapter);
+
+        for (TicketType ticket : ticketType) {
+            ticketPrice += ticket.getTicketPrice();
+        }
+
+        final EditText editTextName = findViewById(R.id.payment_ticket_edit_name);
+        final EditText editTextSurname = findViewById(R.id.payment_ticket_edit_surname);
+        final EditText editTextEmail = findViewById(R.id.payment_ticket_edit_email);
+
+        Button paymentButton = findViewById(R.id.payment_ticket_button_next);
+        Button cancelButton = findViewById(R.id.payment_ticket_button_cancel);
+
+        paymentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = String.valueOf(editTextName.getText());
+                String surname = String.valueOf(editTextSurname.getText());
+                String email = String.valueOf(editTextEmail.getText());
+
+                if (editTextName.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Naam is een verplicht veld.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+                } else if (editTextSurname.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Achternaam is een verplicht veld.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else if (editTextEmail.getText().toString().equals("")) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(PaymentTicketActivity.this);
+                    builder1.setMessage("Email is een verplicht veld.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Terug",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else {
+                    Ticket t = new Ticket(0, 0, showing, name, surname, email, ticketPrice);
+
+                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
+                    i.putExtra("TICKET", t);
+                    startActivity(i);
+                }
+
+
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
