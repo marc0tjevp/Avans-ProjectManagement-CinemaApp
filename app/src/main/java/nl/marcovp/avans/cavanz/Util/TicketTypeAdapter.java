@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import nl.marcovp.avans.cavanz.Domain.TicketType;
@@ -35,8 +36,10 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketType> {
         TextView textViewName = convertView.findViewById(R.id.item_tickettype_textview_type);
         TextView textViewPrice = convertView.findViewById(R.id.item_tickettype_textview_price);
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
         textViewName.setText(ticketType.getTicketTypeName());
-        textViewPrice.setText(String.valueOf(ticketType.getTicketPrice()));
+        textViewPrice.setText(String.valueOf("€ " + df.format(ticketType.getTicketPrice())));
 
         return convertView;
     }

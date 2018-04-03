@@ -1,10 +1,12 @@
 package nl.marcovp.avans.cavanz.Domain;
 
+import java.io.Serializable;
+
 /**
  * Created by Sander on 3/29/2018.
  */
 
-public class Ticket {
+public class Ticket implements Serializable {
     private final String TAG = getClass().getSimpleName();
 
     private int seatNumber;

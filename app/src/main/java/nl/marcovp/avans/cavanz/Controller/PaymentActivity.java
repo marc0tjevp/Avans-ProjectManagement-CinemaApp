@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import nl.marcovp.avans.cavanz.Data.DataHelper;
+import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
 import nl.marcovp.avans.cavanz.Domain.Hall;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
@@ -54,9 +56,7 @@ public class PaymentActivity extends AppCompatActivity {
         textViewStartTime.append(" " + showing.getStartingTime());
         textViewEndTime.append(" " + showing.getEndingTime());
         textViewLocation.append(" " + getString(R.string.payment_text_hall) + " " + showing.getHall().getHallNumber());
-
-        // TODO: Add option to select multiple tickets via arrayadapter
-
+        
         final ArrayList<TicketType> tickets = new ArrayList<>();
         tickets.add(TicketType.TICKET_ADULT);
         tickets.add(TicketType.TICKET_KIDS);

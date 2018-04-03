@@ -76,7 +76,11 @@ public class PaymentTicketActivity extends AppCompatActivity {
                 // TODO: Start payment intent and generate the ticket as pdf.
                 // TODO: Save the ticket to the database.
 
-                Toast.makeText(PaymentTicketActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
+
+                i.putExtra("TICKET", t);
+
+                startActivity(i);
 
             }
         });
