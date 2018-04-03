@@ -103,8 +103,8 @@ public class PaymentActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tickets.size() >= 1) {
-                    tickets.clear();
+                if (tobuytickets.size() >= 1) {
+                    tobuytickets.clear();
                     nextButton.setEnabled(false);
                     adapter.notifyDataSetChanged();
                     Toast.makeText(PaymentActivity.this, "Selectie ongedaan gemaakt", Toast.LENGTH_SHORT).show();
