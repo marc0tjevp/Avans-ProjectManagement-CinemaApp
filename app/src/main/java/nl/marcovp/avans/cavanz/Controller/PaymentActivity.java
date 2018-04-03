@@ -59,6 +59,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         ListView listViewTickets = findViewById(R.id.payment_listview_tickets);
         final Button nextButton = findViewById(R.id.payment_button_next);
+        final Button clearButton = findViewById(R.id.payment_button_clear);
+        final Button cancelButton = findViewById(R.id.payment_button_cancel);
         nextButton.setEnabled(false);
 
         TicketTypeAdapter adapter = new TicketTypeAdapter(this, tickets);
@@ -69,12 +71,12 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
 
-                if (tobuytickets.size() > 1) {
-                    nextButton.setEnabled(true);
-                }
-
                 TicketType tt = (TicketType) adapter.getItemAtPosition(position);
                 tobuytickets.add(tt);
+
+                if (tobuytickets.size() >= 1) {
+                    nextButton.setEnabled(true);
+                }
 
                 Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
 
@@ -94,6 +96,23 @@ public class PaymentActivity extends AppCompatActivity {
 
                 startActivity(i);
 
+            }
+        });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tickets.size() < 1) {
+                    tickets.clear();
+                    Toast.makeText(PaymentActivity.this, "Selectie ongedaan gemaakt", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
