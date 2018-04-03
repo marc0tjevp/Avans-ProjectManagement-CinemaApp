@@ -6,14 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.squareup.picasso.Picasso;
+
+
 import java.util.ArrayList;
 
-import nl.marcovp.avans.cavanz.Domain.Hall;
+import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
+
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.TicketType;
@@ -32,19 +39,27 @@ public class PaymentActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SQLiteHelper db = new SQLiteHelper(this);
+
+        showing = db.getShowing( (String) getIntent().getExtras().get("SHOWING"));
+
+
         setTitle(R.string.text_payment_order);
 
         // TODO: Get Movie from showing.
-        Movie m = new Movie("Titel van de film", 1, 2.0, null, null, "Dit is een film", "Dutch", "05-05-1998");
+        Movie m = showing.getMovie();
 
         // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
-        showing = new Showing(m, "12:00", "14:30", "2018-04-05", new Hall("1", 15, 25));
+
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
         TextView textViewStartTime = findViewById(R.id.payment_textview_starttime);
         TextView textViewEndTime = findViewById(R.id.payment_textview_endtime);
         TextView textViewLocation = findViewById(R.id.payment_textview_location);
+
+        ImageView imageView = findViewById(R.id.payment_imageview_poster);
+        Picasso.with(this).load(m.getImageUrl()).into(imageView);
 
         textViewTitle.setText(showing.getMovie().getTitle());
         textViewDate.append(" " + showing.getDate());

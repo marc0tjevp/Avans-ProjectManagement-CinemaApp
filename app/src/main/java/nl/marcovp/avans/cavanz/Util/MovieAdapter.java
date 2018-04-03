@@ -1,6 +1,8 @@
 package nl.marcovp.avans.cavanz.Util;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.Controller.MovieDetailActivity;
+
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
             movieTitle = (TextView) view.findViewById(R.id.movie_offer_filmtitle);
             moviePoster = (ImageView) view.findViewById(R.id.movie_offer_filmposter);
+
         }
 
         @Override
@@ -73,6 +76,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         View view = inflater.inflate(R.layout.activity_movie_offer_listitem, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
+
+        CardView cardView = (CardView) view.getRootView().findViewById(R.id.listItem_cv);
+        cardView.setMinimumWidth( (int ) (parent.getWidth()/2.2));
 
         return viewHolder;
     }
