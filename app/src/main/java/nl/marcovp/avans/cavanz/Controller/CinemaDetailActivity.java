@@ -66,6 +66,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         final ArrayList<TicketType> types = new ArrayList<>();
         for (TicketType type:TicketType.values()){
             types.add(type);
+            Log.i(TAG,type.getTicketTypeName()+" added to Ticket Type list");
         }
         TicketTypeAdapter adapter = new TicketTypeAdapter(this,types);
         listView.setAdapter(adapter);
@@ -77,7 +78,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         MapView mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 
-        //mapsApi = new GoogleMapsApi(mapView,this,this); MAP API THROWS ERRORS
+        mapsApi = new GoogleMapsApi(mapView,this,this);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
