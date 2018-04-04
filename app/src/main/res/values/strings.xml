@@ -15,11 +15,11 @@
     <string name="info_phone_number" translatable="false">088–51 51 000</string>
     <string name="info_email" translatable="false">klantenservice@cavans.nl</string>
     <string name="info_opening">Openingstijden</string>
-    <string name="info_times_opening"> </string>
+    <string name="info_times_opening">We zijn open van 9 uur \'s ochtends tot 10 uur \'s avonds.</string>
     <string name="info_title_route">Bereikbaarheid</string>
     <string name="description_cinema_picture">The cinema</string>
     <string name="description_maps_button">go to Google Maps</string>
-    <string name="parking_information"> </string>
+    <string name="parking_information">Parkeerplaatsen zijn voor de deur te vinden. Als u op de rode icoon op de kaart drukt krijgt u een routebeschrijving te zien vanaf uw huidige locatie.</string>
 
     <!--Strings needed for rates-->
     <string name="title_rates">Tarieven</string>

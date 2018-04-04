@@ -103,7 +103,7 @@
             <ListView
                 android:id="@+id/cinemaDetailTarifList"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false">
 
             </ListView>
@@ -116,19 +116,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
             <com.google.android.gms.maps.MapView
-<<<<<<< HEAD
                     android:id="@+id/mapView"
-                    android:layout_width="370dp"
-                    android:layout_height="232dp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp" />
             <TextView
-                android:id="@string/parking_information"
+                android:text="@string/parking_information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-=======
-                android:id="@+id/mapView"
-                android:layout_width="match_parent"
-                android:layout_height="240dp" />
->>>>>>> develop
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="64dp" />
