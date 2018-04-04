@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -64,6 +65,10 @@ public class SeatSelectionActivity extends AppCompatActivity {
         // TODO: 4/4/2018  Coupling
         final Showing s = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         tickets = (ArrayList<Ticket>) getIntent().getExtras().getSerializable("TICKETS");
+
+        for (Ticket t : tickets) {
+            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         amountOfChairToDistribute.setText("Stoelen te verdelen: " + tickets.size());
 
