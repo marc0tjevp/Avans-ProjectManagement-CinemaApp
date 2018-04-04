@@ -2,15 +2,13 @@ package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -18,16 +16,19 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.Marker;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Set;
 
+import nl.marcovp.avans.cavanz.Domain.TicketType;
 import nl.marcovp.avans.cavanz.R;
 import nl.marcovp.avans.cavanz.Util.GoogleMapsApi;
+import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 
 //new constructor, can be replaced by the next line
 public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener {
     private final String TAG = getClass().getSimpleName();
 
     private TextView mTextMessage;
-    //"ImageButton imagebutton" has been replaced with the next line
     private GoogleMapsApi mapsApi;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -58,6 +59,13 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         setContentView(R.layout.activity_cinema_detail);
         Log.d(TAG, "onCreate: aangeroepen");
 
+        ListView listView = findViewById(R.id.cinemaDetailTarifList);
+        final ArrayList<TicketType> types = new ArrayList<>();
+        for (TicketType type:TicketType.values()){
+            types.add(type);
+        }
+        TicketTypeAdapter adapter = new TicketTypeAdapter(this,types);
+        listView.setAdapter(adapter);
 
         MapView mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
