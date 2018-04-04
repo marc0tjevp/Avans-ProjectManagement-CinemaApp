@@ -40,7 +40,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/info_name"
-                        android:textSize="@dimen/info_title" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                         />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -83,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/info_opening"
-                    android:textSize="@dimen/info_title" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -105,44 +106,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_rates"
-                android:textSize="@dimen/info_title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
 
-            <TableLayout
+            <ListView
+                android:id="@+id/cinemaDetailTarifList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="250dp">
+                android:layout_height="wrap_content">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_gravity="start"
-                        android:text="@string/name_rates_1" />
-
-                    <TextView
-                        android:layout_gravity="end"
-                        android:text="@string/number_rates_1" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_gravity="start"
-                        android:text="@string/name_rates_2" />
-
-                    <TextView
-                        android:layout_width="280dp"
-                        android:layout_gravity="end"
-                        android:text="@string/number_rates_2" />
-                </TableRow>
-            </TableLayout>
+            </ListView>
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
@@ -158,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/info_title_route"
-                android:textSize="@dimen/info_title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
