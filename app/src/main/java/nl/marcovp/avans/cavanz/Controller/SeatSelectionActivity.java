@@ -92,11 +92,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                int i = 0;
                 for (Ticket t : tickets) {
-                    for (Seat s : seatsSelected) {
-                        s = new Seat(s.getX(), s.getY());
+                        Seat s = new Seat(seatsSelected.get(i).getX(),seatsSelected.get(i).getY());
                         t.setSeat(s);
-                    }
+                        i++;
+
                 }
 
                 goToNextStep(s, tickets);
