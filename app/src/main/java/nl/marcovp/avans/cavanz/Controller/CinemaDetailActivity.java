@@ -28,6 +28,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
 
     private TextView mTextMessage;
     //"ImageButton imagebutton" has been replaced with the next line
+    private GoogleMapsApi mapsApi;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,6 +38,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
             switch (item.getItemId()) {
                 case R.id.navigation_movies:
                     goToMainActivity();
+
                     return true;
                 case R.id.navigation_tickets:
                     goToTicketActivity();
@@ -59,6 +61,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
 
         MapView mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
+        mapsApi = new GoogleMapsApi(mapView,this,this);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -83,6 +86,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
+            //Add next 3 lines too
+            return true;
+        } else {
             return false;
         }
         return true;
