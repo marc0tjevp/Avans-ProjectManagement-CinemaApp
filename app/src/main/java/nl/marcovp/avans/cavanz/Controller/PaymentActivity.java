@@ -41,7 +41,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         SQLiteHelper db = new SQLiteHelper(this);
 
-        showing = db.getShowing( (String) getIntent().getExtras().get("SHOWING"));
+        showing = db.getShowing((String) getIntent().getExtras().get("SHOWING"));
 
 
         setTitle(R.string.text_payment_order);

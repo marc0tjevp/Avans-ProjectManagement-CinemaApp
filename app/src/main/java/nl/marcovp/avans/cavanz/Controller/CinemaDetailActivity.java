@@ -23,7 +23,7 @@ import nl.marcovp.avans.cavanz.R;
 import nl.marcovp.avans.cavanz.Util.GoogleMapsApi;
 
 //new constructor, can be replaced by the next line
-public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
+public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener {
     private final String TAG = getClass().getSimpleName();
 
     private TextView mTextMessage;
@@ -79,7 +79,6 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         startActivity(intent);
     }
 
-    //Just replace "public void onClick(View view) {" with "public boolean onMarkerClick(Marker marker) {"
     @Override
     public boolean onMarkerClick(Marker marker) {
         Uri uri = Uri.parse("google.navigation:q=" + Uri.encode("Chasséveld 15, Breda, Nederland"));
@@ -93,6 +92,4 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
             return false;
         }
     }
-
-
 }
