@@ -99,5 +99,5 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         } else {
             return false;
         }
-     }
+    }
 }

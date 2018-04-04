@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Cavanz</string>
     <string name="text_navbar_films">Filmaanbod</string>
-    <string name="text_navbar_tickets">Tickets</string>
+    <string name="text_navbar_tickets">Recent bekeken</string>
     <string name="text_navbar_info">Informatie</string>
     <string name="text_navbar_search">Zoeken</string>
     <string name="navbar_search">Zoeken</string>
