@@ -19,12 +19,15 @@ import org.w3c.dom.Text;
 import nl.marcovp.avans.cavanz.Domain.Movie;
 import nl.marcovp.avans.cavanz.R;
 
+
+
 /**
  * Created by Djim on 28-3-2018.
  */
 
 public class MovieDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,7 +41,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
                     return true;
                 case R.id.navigation_tickets:
 
-                    goToTicketActivity();
+                    goToRecentMovieActivity();
                     return true;
                 case R.id.navigation_info:
                     goToCinemaDetailActivity();
@@ -71,7 +74,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 
         Bundle extras = getIntent().getExtras();
         final Movie movie = (Movie) extras.getSerializable("MOVIE");
-
+        RecentMovieActivity.addRecentMovie(movie);
         //Turn double rating to int rating
         Double dRating = movie.getRating();
         Integer iRating = dRating.intValue();
@@ -102,8 +105,8 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    private void goToTicketActivity() {
-        Intent intent = new Intent(this, TicketActivity.class);
+    private void goToRecentMovieActivity(){
+        Intent intent = new Intent(this, RecentMovieActivity.class);
         startActivity(intent);
     }
 
