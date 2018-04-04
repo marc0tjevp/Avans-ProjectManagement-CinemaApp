@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
                     return true;
                 case R.id.navigation_tickets:
 
-                    goToTicketActivity();
+                    goToRecentMovieActivity();
                     return true;
                 case R.id.navigation_info:
                     goToCinemaDetailActivity();
@@ -150,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         }
     }
 
-    private void goToTicketActivity() {
-        Intent intent = new Intent(this, TicketActivity.class);
+    private void goToRecentMovieActivity(){
+        Intent intent = new Intent(this, RecentMovieActivity.class);
         startActivity(intent);
     }
 
