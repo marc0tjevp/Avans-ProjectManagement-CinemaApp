@@ -24,11 +24,10 @@ import java.util.List;
  * Created by Sander on 3/29/2018.
  */
 
-//Entire Class is new, and can be replaced
 public class GoogleMapsApi implements OnMapReadyCallback{
     private final String TAG = getClass().getSimpleName();
     private Geocoder geocoder;
-    GoogleMap.OnMarkerClickListener listener;
+    private GoogleMap.OnMarkerClickListener listener;
 
     public GoogleMapsApi(MapView view, GoogleMap.OnMarkerClickListener listener, Context context) {
         geocoder = new Geocoder(context);
