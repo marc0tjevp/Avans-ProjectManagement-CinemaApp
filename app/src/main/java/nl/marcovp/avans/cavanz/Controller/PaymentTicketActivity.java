@@ -74,6 +74,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
         final EditText editTextEmail = findViewById(R.id.payment_ticket_edit_email);
 
         Button paymentButton = findViewById(R.id.payment_ticket_button_next);
+        paymentButton.setText("Naar stoelselectie");
         Button cancelButton = findViewById(R.id.payment_ticket_button_cancel);
 
         paymentButton.setOnClickListener(new View.OnClickListener() {
@@ -134,8 +135,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
                         tickets.add(t);
                     }
 
-//                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
-//                    i.putExtra("TICKET", t);
+
 
                     Intent i = new Intent(getApplicationContext(), SeatSelectionActivity.class);
                     i.putExtra("TICKETS", tickets);

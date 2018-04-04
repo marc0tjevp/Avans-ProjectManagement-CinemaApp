@@ -1,34 +1,33 @@
 package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
+
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
+
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
+
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.zip.Inflater;
 
-import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
+
+
 import nl.marcovp.avans.cavanz.Domain.Hall;
-import nl.marcovp.avans.cavanz.Domain.Movie;
+
 import nl.marcovp.avans.cavanz.Domain.Seat;
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.Ticket;
@@ -37,9 +36,9 @@ import nl.marcovp.avans.cavanz.R;
 public class SeatSelectionActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
 
-    private int ColorSelected = Color.GREEN;
-    private int ColorTaken = Color.DKGRAY;
-    private int ColorAvail = Color.BLUE;
+    private int ColorSelected = Color.parseColor("#76ff03");
+    private int ColorTaken = Color.parseColor("#757575");
+    private int ColorAvail = Color.parseColor("#03a9f4");
     private String seatImagePath = "https://cdn2.iconfinder.com/data/icons/movie-icons/512/Directors_Chair-128.png";
     private ArrayList<Ticket> tickets;
 
@@ -66,9 +65,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         final Showing s = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         tickets = (ArrayList<Ticket>) getIntent().getExtras().getSerializable("TICKETS");
 
-        for (Ticket t : tickets) {
-            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
-        }
+
 
         amountOfChairToDistribute.setText("Stoelen te verdelen: " + tickets.size());
 
@@ -128,19 +125,23 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 if (seat.isTaken()) {
                     seat.getSeat().setBackgroundColor(ColorTaken);
                 }
-
                 gridLayout.addView(seat.getSeat());
+
                 seat.getSeat().setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View view) {
 
                         Log.d(TAG, "onClick: " + seat.getX() + "  " + seat.getY() + " selected =: " + seat.isSelected());
-                        nextButton.setEnabled(false);
+
+
+
                         if (seat.isTaken()) {
                             seat.getSeat().setBackgroundColor(ColorTaken);
+                            Toast.makeText(SeatSelectionActivity.this, "Is al bezet!", Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        nextButton.setEnabled(false);
                         seat.setSelected(!seat.isSelected());
 
                         if (seat.isSelected()) {
@@ -148,7 +149,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                             seat.getSeat().setBackgroundColor(ColorSelected);
 
                             amountOfChairToDistribute.setText("Stoelen te verdelen: " + (tickets.size() - seatsSelected.size()));
-                            Picasso.with(seat.getSeat().getContext()).load(seatImagePath).into(seat.getSeat());
+
 
                             // TODO: 4/4/2018  Coupling
 
@@ -157,9 +158,17 @@ public class SeatSelectionActivity extends AppCompatActivity {
                             }
                         } else {
                             seat.getSeat().setBackgroundColor(ColorAvail);
+
                             seatsSelected.remove(seat);
+                            amountOfChairToDistribute.setText("Stoelen te verdelen: " + (tickets.size() - seatsSelected.size()));
+                            if (tickets.size() == seatsSelected.size()) {
+                                nextButton.setEnabled(true);
+                            }
                         }
                         Log.d(TAG, "onClick: amount of seats in array: " + seatsSelected.size());
+                        if (tickets.size() < seatsSelected.size()){
+                            Toast.makeText(SeatSelectionActivity.this, "Koop meer tickets!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }

@@ -27,6 +27,11 @@ public class Seat implements Serializable {
 
     }
 
+    @Override
+    public String toString() {
+        return "Rij: " + x + " Stoel: " + y;
+    }
+
     public boolean isSelected() {
         return selected;
     }
