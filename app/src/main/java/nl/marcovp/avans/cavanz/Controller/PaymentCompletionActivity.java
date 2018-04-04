@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import nl.marcovp.avans.cavanz.Data.DataHelper;
 import nl.marcovp.avans.cavanz.Data.SQLiteHelper;
 import nl.marcovp.avans.cavanz.Domain.Showing;
@@ -30,7 +33,7 @@ public class PaymentCompletionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_completion);
 
-        Ticket t = (Ticket) getIntent().getExtras().get("TICKET");
+        ArrayList<Ticket> tickets = (ArrayList<Ticket>) getIntent().getSerializableExtra("TICKETS");
         String statuscode = getIntent().getStringExtra("PAYMENT_CODE");
 
         TextView textViewStatus = findViewById(R.id.payment_completion_text_message);
@@ -52,19 +55,16 @@ public class PaymentCompletionActivity extends AppCompatActivity {
 
             // TODO: Insert ticket into database.
 
-            final Ticket finalT = t;
             buttonDownload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    if (PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(PaymentCompletionActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        PDFGenerator pdf = new PDFGenerator();
-                        pdf.createDocument(finalT);
-                        Toast.makeText(PaymentCompletionActivity.this, R.string.text_payment_completed_ticketsaved, Toast.LENGTH_SHORT).show();
-                    } else {
-                        requestWritePermission(PaymentCompletionActivity.this);
-                    }
-
+//                    if (PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(PaymentCompletionActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//                        PDFGenerator pdf = new PDFGenerator();
+//                        pdf.createDocument(finalT);
+//                        Toast.makeText(PaymentCompletionActivity.this, R.string.text_payment_completed_ticketsaved, Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        requestWritePermission(PaymentCompletionActivity.this);
+//                    }
                 }
             });
 
@@ -73,14 +73,12 @@ public class PaymentCompletionActivity extends AppCompatActivity {
             textViewStatus.setText(R.string.text_payment_failed_title);
             textViewExplanation.setText(R.string.text_payment_failed_explanation);
 
-            t = null;
+//            t = null;
 
         } else {
             Toast.makeText(this, R.string.text_payment_error_whathappened, Toast.LENGTH_SHORT).show();
-
-            t = null;
+//            t = null;
         }
-
     }
 
     private static void requestWritePermission(final Context context) {
