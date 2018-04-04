@@ -19,6 +19,7 @@
     <string name="info_title_route">Bereikbaarheid</string>
     <string name="description_cinema_picture">The cinema</string>
     <string name="description_maps_button">go to Google Maps</string>
+    <string name="parking_information"> </string>
 
     <!--Strings needed for rates-->
     <string name="title_rates">Tarieven</string>

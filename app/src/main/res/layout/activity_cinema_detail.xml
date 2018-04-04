@@ -136,6 +136,10 @@
                     android:id="@+id/mapView"
                     android:layout_width="370dp"
                     android:layout_height="232dp" />
+            <TextView
+                android:id="@string/parking_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="64dp" />
