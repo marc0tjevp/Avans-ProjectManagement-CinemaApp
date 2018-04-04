@@ -22,10 +22,6 @@
 
     <!--Strings needed for rates-->
     <string name="title_rates">Tarieven</string>
-    <string name="name_rates_1">Type 1</string>
-    <string name="number_rates_1">€&#8230;</string>
-    <string name="name_rates_2">Type 2</string>
-    <string name="number_rates_2">€&#8230;</string>
 
     <!-- Placeholder string -->
     <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
