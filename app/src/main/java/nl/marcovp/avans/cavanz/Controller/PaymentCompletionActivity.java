@@ -43,9 +43,6 @@ public class PaymentCompletionActivity extends AppCompatActivity {
         Button buttonDownload = findViewById(R.id.payment_completion_button_download);
         buttonDownload.setVisibility(View.INVISIBLE);
 
-        for (Ticket t : tickets) {
-            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
-        }
 
         if (statuscode.equals("200")) {
 

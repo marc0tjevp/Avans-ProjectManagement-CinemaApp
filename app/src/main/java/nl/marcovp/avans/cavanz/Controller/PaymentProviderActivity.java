@@ -42,9 +42,7 @@ public class PaymentProviderActivity extends AppCompatActivity {
 
         tickets = (ArrayList<Ticket>) getIntent().getSerializableExtra("TICKETS");
 
-        for (Ticket t : tickets) {
-            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
-        }
+
 
         paypal.setOnClickListener(new View.OnClickListener() {
             @Override
