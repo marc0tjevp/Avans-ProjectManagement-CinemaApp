@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
     tools:context="nl.marcovp.avans.cavanz.Controller.ShowSelectionActivity">
 
     <LinearLayout
         android:id="@+id/bac"
         android:layout_width="match_parent"
         android:layout_height="505dp"
-        android:background="@color/colorOrange"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,51 +19,35 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="103dp"
-            android:background="@color/colorOrange"
-            android:orientation="horizontal">
+            android:layout_height="200dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/show_selection_image1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorLightOrange"
+                android:background="@color/colorBlack"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/colorBlack" />
-
         <LinearLayout
             android:id="@+id/showSelection_DatesLL"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorLightBlueTwo"
+            android:layout_height="80dp"
+            android:elevation="12dp"
             android:orientation="horizontal">
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_weight="1"
-            android:background="@color/colorBlack" />
-
         <LinearLayout
             android:id="@+id/Show_Selection_SelectShowingLL"
             android:layout_width="match_parent"
-            android:layout_height="343dp"
-            android:background="@color/colorLightBlueTwo"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
         </LinearLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
