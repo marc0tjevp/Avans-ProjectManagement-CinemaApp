@@ -2,13 +2,14 @@ package nl.marcovp.avans.cavanz.Domain;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Created by Sander on 4/4/2018.
  */
 
-public class Seat {
+public class Seat implements Serializable {
     private boolean selected;
     private int x;
     private int y;

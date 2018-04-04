@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -42,12 +43,10 @@ public class SeatSelectionActivity extends AppCompatActivity {
     private String seatImagePath = "https://cdn2.iconfinder.com/data/icons/movie-icons/512/Directors_Chair-128.png";
     private ArrayList<Ticket> tickets;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_selection);
-
 
         final ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.chair_selection_frame);
         final Button nextButton = (Button) findViewById(R.id.chair_selection_next);
@@ -55,9 +54,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
         final TextView amountOfChairToDistribute = (TextView) findViewById(R.id.AmountOfChairToDistribute);
 
         amountOfChairToDistribute.setText("Stoelen te verdelen: ");
-
-
-
 
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,14 +63,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
         });
 
         // TODO: 4/4/2018  Coupling
-          final Showing s = (Showing)  getIntent().getExtras().getSerializable("SHOWING");
-          tickets = (ArrayList<Ticket>) getIntent().getExtras().getSerializable("TICKETS");
+        final Showing s = (Showing) getIntent().getExtras().getSerializable("SHOWING");
+        tickets = (ArrayList<Ticket>) getIntent().getExtras().getSerializable("TICKETS");
 
-        //FOR DEBUG
+        for (Ticket t : tickets) {
+            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
+        }
 
-
-        //TODO AFTER COUPLING
-        /////////Uncomment after coupling
         amountOfChairToDistribute.setText("Stoelen te verdelen: " + tickets.size());
 
         Hall hall = s.getHall();
@@ -88,23 +83,28 @@ public class SeatSelectionActivity extends AppCompatActivity {
         final GridLayout gridLayout = new GridLayout(this);
         gridLayout.setLayoutParams(cl.getLayoutParams());
 
-
         gridLayout.setColumnCount(seatsPerRow + 1);
         gridLayout.setRowCount(rows + 1);
         gridLayout.setLayoutParams(new GridLayout.LayoutParams());
         gridLayout.setFitsSystemWindows(true);
         gridLayout.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
 
-
         cl.addView(gridLayout);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToNextStep(s,seatsSelected,tickets);
+
+                for (Ticket t : tickets) {
+                    for (Seat s : seatsSelected) {
+                        s = new Seat(s.getX(), s.getY());
+                        t.setSeat(s);
+                    }
+                }
+
+                goToNextStep(s, tickets);
             }
         });
-
 
         Log.d(TAG, "onCreate: Hall! " + hall.getSeatPerRow() + " bij " + hall.getRowAmount());
         for (int y = 0; y < rows; y++) {
@@ -146,39 +146,30 @@ public class SeatSelectionActivity extends AppCompatActivity {
                         if (seat.isSelected()) {
                             seatsSelected.add(seat);
                             seat.getSeat().setBackgroundColor(ColorSelected);
-                            //TODO Uncomment after coupling
-                            amountOfChairToDistribute.setText("Stoelen te verdelen: " + (tickets.size()-seatsSelected.size()) );
-                            Picasso.with(seat.getSeat().getContext()).load(seatImagePath).into(seat.getSeat());
 
+                            amountOfChairToDistribute.setText("Stoelen te verdelen: " + (tickets.size() - seatsSelected.size()));
+                            Picasso.with(seat.getSeat().getContext()).load(seatImagePath).into(seat.getSeat());
 
                             // TODO: 4/4/2018  Coupling
 
-                             if (tickets.size() == seatsSelected.size()){
-                              nextButton.setEnabled(true);
-                             }
+                            if (tickets.size() == seatsSelected.size()) {
+                                nextButton.setEnabled(true);
+                            }
                         } else {
                             seat.getSeat().setBackgroundColor(ColorAvail);
                             seatsSelected.remove(seat);
-
-
                         }
                         Log.d(TAG, "onClick: amount of seats in array: " + seatsSelected.size());
                     }
                 });
-
             }
         }
     }
 
-    public void goToNextStep(Showing s, ArrayList<Seat> seats, ArrayList<Ticket> tickets){
-        Intent intent = new Intent(this, PaymentTicketActivity.class);
-        intent.putExtra("SHOWING", s);
-        intent.putExtra("SEATS", seats);
+    public void goToNextStep(Showing s, ArrayList<Ticket> tickets) {
+        Intent intent = new Intent(this, PaymentProviderActivity.class);
         intent.putExtra("TICKETS", tickets);
 
         startActivity(intent);
-
-
-
     }
 }

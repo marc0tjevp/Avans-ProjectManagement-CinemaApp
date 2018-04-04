@@ -29,16 +29,21 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:padding="20dp">
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1.4"
+            android:background="@color/cardview_dark_background"
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/payment_imageview_poster"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
                 android:contentDescription="@string/text_payment_poster"
                 android:cropToPadding="false"
-                android:padding="20dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <LinearLayout
@@ -51,75 +56,80 @@
                     android:id="@+id/payment_textview_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_payment_title" />
+                    android:text="@string/text_payment_title"
+                    android:textColor="@color/cardview_light_background" />
 
                 <TextView
                     android:id="@+id/payment_textview_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_payment_date" />
+                    android:text="@string/text_payment_date"
+                    android:textColor="@color/cardview_light_background" />
 
                 <TextView
                     android:id="@+id/payment_textview_starttime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_payment_starttime" />
+                    android:text="@string/text_payment_starttime"
+                    android:textColor="@color/cardview_light_background" />
 
                 <TextView
                     android:id="@+id/payment_textview_endtime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_payment_endtime"
+                    android:textColor="@color/cardview_light_background"
                     tools:text="Eindtijd:" />
 
                 <TextView
                     android:id="@+id/payment_textview_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_payment_location" />
+                    android:text="@string/text_payment_location"
+                    android:textColor="@color/cardview_light_background" />
             </LinearLayout>
         </GridLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:orientation="vertical">
 
             <ListView
                 android:id="@+id/payment_listview_tickets"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"></ListView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/payment_button_cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Annuleren" />
-
-                <Button
-                    android:id="@+id/payment_button_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Clear" />
-
-                <Button
-                    android:id="@+id/payment_button_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Volgende" />
-            </LinearLayout>
+                android:layout_height="match_parent"></ListView>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.85"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/payment_button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Annuleren" />
+
+            <Button
+                android:id="@+id/payment_button_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Clear" />
+
+            <Button
+                android:id="@+id/payment_button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Volgende" />
         </LinearLayout>
 
     </LinearLayout>

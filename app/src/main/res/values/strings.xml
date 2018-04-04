@@ -65,5 +65,7 @@
     <string name="payment_text_hall">Zaal</string>
     <string name="payment_text_overview">Controleren en Betalen</string>
     <string name="OrderNowButton">Bestel nu!</string>
+    <string name="text_show_selection_date">Kies een datum</string>
+    <string name="text_show_selection_hall">Kies een tijd en zaal</string>
 
 </resources>
