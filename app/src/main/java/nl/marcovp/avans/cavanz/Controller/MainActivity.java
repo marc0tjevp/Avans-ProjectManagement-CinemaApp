@@ -54,13 +54,16 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
                 case R.id.navigation_info:
                     goToCinemaDetailActivity();
                     return true;
-                case R.id.navigation_search:
-                    TurnSearchBar();
-                    break;
             }
             return false;
         }
     };
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        onCreate(getIntent().getExtras());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +104,6 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-        // Debug
-        Intent i = new Intent(this, PaymentActivity.class);
-        startActivity(i);
 
     }
 
@@ -135,11 +135,9 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
             Log.d(TAG, "OnMovieSetAvailable: data found (Not creating test data)");
         }
 
-        ////////////////EXCLUDE IN PRODUCTION
-        Log.d(TAG, "OnMovieSetAvailable: showings planned: " + db.getAllShowings().size());
-        Log.d(TAG, "OnMovieSetAvailable: movies in db: " + db.getAllMovies().size());
-        Log.d(TAG, "OnMovieSetAvailable: found" + db.getAllMovies().size() + "results in db");
 
+
+            db.close();
 
     }
 

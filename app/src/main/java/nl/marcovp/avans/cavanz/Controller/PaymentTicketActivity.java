@@ -5,13 +5,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import android.widget.ImageView;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import com.squareup.picasso.Picasso;
 
 import nl.marcovp.avans.cavanz.Domain.Showing;
 import nl.marcovp.avans.cavanz.Domain.Ticket;
@@ -32,6 +38,9 @@ public class PaymentTicketActivity extends AppCompatActivity {
 
         final Showing showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         final ArrayList<TicketType> ticketType = (ArrayList<TicketType>) getIntent().getExtras().getSerializable("TICKETTYPE");
+
+        ImageView imageView = findViewById(R.id.payment_ticket_imageview_poster);
+        Picasso.with(this).load(showing.getMovie().getImageUrl()).into(imageView);
 
         TextView textViewTitle = findViewById(R.id.payment_ticket_textview_title);
         TextView textViewDate = findViewById(R.id.payment_ticket_textview_date);
