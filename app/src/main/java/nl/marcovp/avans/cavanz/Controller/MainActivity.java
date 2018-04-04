@@ -59,11 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         }
     };
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        onCreate(getIntent().getExtras());
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
