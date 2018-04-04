@@ -29,6 +29,7 @@ import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 public class PaymentTicketActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     double ticketPrice = 0;
+    private ArrayList<Ticket> tickets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,10 +128,19 @@ public class PaymentTicketActivity extends AppCompatActivity {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
                 } else {
-                    Ticket t = new Ticket(0, 0, showing, name, surname, email, ticketPrice);
 
-                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
-                    i.putExtra("TICKET", t);
+                    for (TicketType tt : ticketType) {
+                        Ticket t = new Ticket(null, showing, name, surname, email, tt.getTicketPrice());
+                        tickets.add(t);
+                    }
+
+//                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
+//                    i.putExtra("TICKET", t);
+
+                    Intent i = new Intent(getApplicationContext(), SeatSelectionActivity.class);
+                    i.putExtra("TICKETS", tickets);
+                    i.putExtra("SHOWING", showing);
+
                     startActivity(i);
                 }
 

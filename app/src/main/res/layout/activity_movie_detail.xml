@@ -1,38 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/Movie_Detail_OrderNow"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="1"
-        android:background="@android:color/holo_blue_light"
-        android:text="@string/OrderNowButton"
-        android:textColor="@android:color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        tools:text="@string/OrderNowButton" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation">
-
-    </android.support.design.widget.BottomNavigationView>
-
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +27,14 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+
                 app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+
 
             <TextView
                 android:id="@+id/tv_movie_detail_title"
@@ -69,16 +50,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_movie_detail_image" />
 
             <!--<TextView-->
-                <!--android:id="@+id/tv_movie_detail_genre"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:text="@string/movie_genre"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_title" />-->
+            <!--android:id="@+id/tv_movie_detail_genre"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="@string/movie_genre"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_title" />-->
 
             <TextView
                 android:id="@+id/tv_movie_detail_releasedate"
@@ -107,28 +88,27 @@
 
                 <RatingBar
                     android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    tools:layout_editor_absoluteX="48dp"
-                    tools:layout_editor_absoluteY="424dp"
-                    style="?android:attr/ratingBarStyleSmall"
                     android:rating="3.5"
-                    />
+                    tools:layout_editor_absoluteX="48dp"
+                    tools:layout_editor_absoluteY="424dp" />
 
 
                 <TextView
                     android:id="@+id/tv_movie_detail_duration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
                     android:text="@string/movie_duration"
-                    android:textAlignment="viewEnd"
-                    android:layout_weight="0.6"/>
+                    android:textAlignment="viewEnd" />
 
                 <TextView
                     android:id="@+id/tv_movie_detail_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
@@ -178,5 +158,31 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
+
     </ScrollView>
+
+    <Button
+        android:id="@+id/Movie_Detail_OrderNow"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="361dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="504dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_blue_light"
+        android:text="@string/OrderNowButton"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="@string/OrderNowButton" />
+
+
+
 </android.support.constraint.ConstraintLayout>

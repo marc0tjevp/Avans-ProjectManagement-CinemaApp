@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import nl.marcovp.avans.cavanz.Domain.Ticket;
@@ -17,6 +18,7 @@ import nl.marcovp.avans.cavanz.R;
 
 public class PaymentProviderActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
+    private ArrayList<Ticket> tickets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,11 @@ public class PaymentProviderActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, statuscodes);
         spinner.setAdapter(dataAdapter);
 
-        final Ticket ticket = (Ticket) getIntent().getSerializableExtra("TICKET");
+        tickets = (ArrayList<Ticket>) getIntent().getSerializableExtra("TICKETS");
+
+        for (Ticket t : tickets) {
+            Toast.makeText(this, t.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         paypal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +52,7 @@ public class PaymentProviderActivity extends AppCompatActivity {
                 Toast.makeText(PaymentProviderActivity.this, "Simulatie betaling", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(), PaymentCompletionActivity.class);
 
-                i.putExtra("TICKET", ticket);
+                i.putExtra("TICKETS", tickets);
                 i.putExtra("PAYMENT_CODE", spinner.getSelectedItem().toString());
 
                 startActivity(i);
@@ -60,7 +66,7 @@ public class PaymentProviderActivity extends AppCompatActivity {
                 Toast.makeText(PaymentProviderActivity.this, "Simulatie betaling", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(), PaymentCompletionActivity.class);
 
-                i.putExtra("TICKET", ticket);
+                i.putExtra("TICKETS", tickets);
                 i.putExtra("PAYMENT_CODE", spinner.getSelectedItem().toString());
 
                 startActivity(i);
@@ -74,7 +80,7 @@ public class PaymentProviderActivity extends AppCompatActivity {
                 Toast.makeText(PaymentProviderActivity.this, "Simulatie betaling", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(), PaymentCompletionActivity.class);
 
-                i.putExtra("TICKET", ticket);
+                i.putExtra("TICKETS", tickets);
                 i.putExtra("PAYMENT_CODE", spinner.getSelectedItem().toString());
 
                 startActivity(i);
@@ -88,7 +94,7 @@ public class PaymentProviderActivity extends AppCompatActivity {
                 Toast.makeText(PaymentProviderActivity.this, "Simulatie betaling", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(), PaymentCompletionActivity.class);
 
-                i.putExtra("TICKET", ticket);
+                i.putExtra("TICKETS", tickets);
                 i.putExtra("PAYMENT_CODE", spinner.getSelectedItem().toString());
 
                 startActivity(i);

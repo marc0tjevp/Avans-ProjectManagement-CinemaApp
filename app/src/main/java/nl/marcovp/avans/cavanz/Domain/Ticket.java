@@ -9,17 +9,15 @@ import java.io.Serializable;
 public class Ticket implements Serializable {
     private final String TAG = getClass().getSimpleName();
 
-    private int seatNumber;
-    private int rowNumber;
+    private Seat seat;
     private Showing showing;
     private String name;
     private String surname;
     private String email;
     private double totalPrice;
 
-    public Ticket(int seatNumber, int rowNumber, Showing showing, String name, String surname, String email, double totalPrice) {
-        this.seatNumber = seatNumber;
-        this.rowNumber = rowNumber;
+    public Ticket(Seat seat, Showing showing, String name, String surname, String email, double totalPrice) {
+        this.seat = seat;
         this.showing = showing;
         this.name = name;
         this.surname = surname;
@@ -30,31 +28,14 @@ public class Ticket implements Serializable {
     @Override
     public String toString() {
         return "Ticket{" +
-                "seatNumber=" + seatNumber +
-                ", rowNumber=" + rowNumber +
+                "TAG='" + TAG + '\'' +
+                ", seat=" + seat +
                 ", showing=" + showing +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", totalPrice=" + totalPrice +
                 '}';
-    }
-
-
-    public int getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public int getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(int rowNumber) {
-        this.rowNumber = rowNumber;
     }
 
     public Showing getShowing() {
@@ -95,5 +76,13 @@ public class Ticket implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 }
