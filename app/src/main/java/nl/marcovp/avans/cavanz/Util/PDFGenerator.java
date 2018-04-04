@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,7 +74,8 @@ public class PDFGenerator {
                 document.add(new Paragraph(" "));
                 document.add(new Paragraph("Naam: " + ticket.getName() + " " + ticket.getSurname()));
                 document.add(new Paragraph("Email: " + ticket.getEmail()));
-                document.add(new Paragraph("Prijs: " + ticket.getTotalPrice()));
+                DecimalFormat df = new DecimalFormat("#.00");
+                document.add(new Paragraph("Prijs: €" + df.format(ticket.getTotalPrice())));
             }
 
             document.close();
