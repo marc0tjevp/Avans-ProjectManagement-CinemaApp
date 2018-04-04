@@ -5,6 +5,8 @@
     <string name="text_navbar_info">Informatie</string>
     <string name="text_navbar_search">Zoeken</string>
     <string name="navbar_search">Zoeken</string>
+    <string name="maps_key">AIzaSyCmRrTv3zdQZPZ-DiodRENNdJ1c2SPzrhc</string>
+
 
     <!--  Strings needed for info  -->
     <string name="info_name" translatable="false">Cavanz Cinema</string>

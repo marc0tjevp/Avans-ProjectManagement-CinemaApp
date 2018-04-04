@@ -13,15 +13,21 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.Marker;
+
 import java.net.URI;
 
 import nl.marcovp.avans.cavanz.R;
+import nl.marcovp.avans.cavanz.Util.GoogleMapsApi;
 
-public class CinemaDetailActivity extends AppCompatActivity implements View.OnClickListener {
+//new constructor, can be replaced by the next line
+public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
     private final String TAG = getClass().getSimpleName();
 
-    ImageButton button;
     private TextView mTextMessage;
+    //"ImageButton imagebutton" has been replaced with the next line
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,37 +42,28 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
                     goToTicketActivity();
                     return true;
                 case R.id.navigation_info:
-                    //     mTextMessage.setText(R.string.text_navbar_info);
+
                     return true;
             }
             return false;
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate: aangeroepen");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema_detail);
-        button = (ImageButton) findViewById(R.id.button_maps);
-        button.setOnClickListener(this);
+        Log.d(TAG, "onCreate: aangeroepen");
+
+
+        MapView mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_info);
 
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        Uri uri = Uri.parse("google.navigation:q=" + Uri.encode("Chasséveld 15, Breda, Nederland"));
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
     }
 
     private void goToMainActivity() {
@@ -78,4 +75,18 @@ public class CinemaDetailActivity extends AppCompatActivity implements View.OnCl
         Intent intent = new Intent(this, TicketActivity.class);
         startActivity(intent);
     }
+
+    //Just replace "public void onClick(View view) {" with "public boolean onMarkerClick(Marker marker) {"
+    @Override
+    public void onClick(View view) {
+        Uri uri = Uri.parse("google.navigation:q=" + Uri.encode("Chasséveld 15, Breda, Nederland"));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+            return false;
+        }
+    }
+
+
 }
