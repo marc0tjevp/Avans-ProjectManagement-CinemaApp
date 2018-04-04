@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import com.squareup.picasso.Picasso;
@@ -47,6 +48,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
         TextView textViewStartTime = findViewById(R.id.payment_ticket_textview_starttime);
         TextView textViewEndTime = findViewById(R.id.payment_ticket_textview_endtime);
         TextView textViewLocation = findViewById(R.id.payment_ticket_textview_location);
+        TextView textViewPrice = findViewById(R.id.payment_ticket_textview_price);
 
         textViewTitle.setText(showing.getMovie().getTitle());
         textViewDate.append(" " + showing.getDate());
@@ -61,6 +63,10 @@ public class PaymentTicketActivity extends AppCompatActivity {
         for (TicketType ticket : ticketType) {
             ticketPrice += ticket.getTicketPrice();
         }
+
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        textViewPrice.setText("€" + df.format(ticketPrice));
 
         final EditText editTextName = findViewById(R.id.payment_ticket_edit_name);
         final EditText editTextSurname = findViewById(R.id.payment_ticket_edit_surname);
