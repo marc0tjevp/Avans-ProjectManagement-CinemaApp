@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.CinemaDetailActivity"></activity>
+        <activity android:name=".Controller.CinemaDetailActivity">
+            <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/maps_key"/>
+        </activity>
         <activity android:name=".Controller.MovieDetailActivity"></activity>
         <activity
             android:name=".Controller.PaymentActivity"
