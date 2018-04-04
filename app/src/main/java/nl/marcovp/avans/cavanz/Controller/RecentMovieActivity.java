@@ -1,6 +1,7 @@
 package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 public class RecentMovieActivity extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class RecentMovieActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private SearchView searchView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,6 +66,32 @@ public class RecentMovieActivity extends AppCompatActivity {
 
         navigation.setSelectedItemId(R.id.navigation_tickets);
 
+        searchView = findViewById(R.id.search_view);
+        searchView.setBackgroundColor(Color.BLUE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                for(Movie m : recentMovies){
+                    if(m.getTitle().toLowerCase().contains(s.toLowerCase())){
+                        System.out.println("Found: " + m.getTitle().toString());
+                        Intent detailIntent = new Intent(searchView.getContext().getApplicationContext(),MovieDetailActivity.class);
+                        detailIntent.putExtra("MOVIE", m);
+                        startActivity(detailIntent);
+                        break;
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+
+
+
         if (recentMovies.size() == 0){
             Toast.makeText(this, "Geen geschiedenis", Toast.LENGTH_LONG).show();
         }
@@ -73,8 +102,14 @@ public class RecentMovieActivity extends AppCompatActivity {
     }
 
     public static void addRecentMovie(Movie movie){
-
-        if (!recentMovies.contains(movie)){
+            boolean add = true;
+        for (Movie recentMovie: recentMovies
+             ) {
+            if (movie.getId() == recentMovie.getId()){
+                add = false;
+            }
+        }
+        if (add){
             recentMovies.add(movie);
         }
 
