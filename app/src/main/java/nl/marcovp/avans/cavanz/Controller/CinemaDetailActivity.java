@@ -102,9 +102,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
                     Log.e(TAG, e.getLocalizedMessage());
                 }
 
-                Address address = addresses.get(0);
+            //    Address address = addresses.get(0);
 
-                LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
+                LatLng location = new LatLng(51.588969, 4.785808);
                 googleMap.addMarker(new MarkerOptions().position(location)).setTitle("Cavanz Cinema");
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 14f));
 
