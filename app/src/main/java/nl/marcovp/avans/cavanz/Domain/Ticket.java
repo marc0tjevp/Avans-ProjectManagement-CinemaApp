@@ -11,6 +11,7 @@ public class Ticket implements Serializable {
 
     private int seatNumber;
     private int rowNumber;
+    private Seat seat;
     private Showing showing;
     private String name;
     private String surname;
@@ -20,6 +21,15 @@ public class Ticket implements Serializable {
     public Ticket(int seatNumber, int rowNumber, Showing showing, String name, String surname, String email, double totalPrice) {
         this.seatNumber = seatNumber;
         this.rowNumber = rowNumber;
+        this.showing = showing;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.totalPrice = totalPrice;
+    }
+
+    public Ticket(Seat seat, Showing showing, String name, String surname, String email, double totalPrice) {
+        this.seat = seat;
         this.showing = showing;
         this.name = name;
         this.surname = surname;
@@ -95,5 +105,13 @@ public class Ticket implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 }

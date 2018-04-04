@@ -1,10 +1,12 @@
 package nl.marcovp.avans.cavanz.Domain;
 
+import java.io.Serializable;
+
 /**
  * Created by marco on 4/2/18.
  */
 
-public enum TicketType {
+public enum TicketType implements Serializable {
     TICKET_ADULT(11.50, "Volwassenen"),
     TICKET_KIDS(8.50, "Kinderen"),
     TICKET_STUDENT(10.00, "Studenten");
