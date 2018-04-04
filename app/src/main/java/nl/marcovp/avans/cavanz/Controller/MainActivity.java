@@ -1,6 +1,7 @@
 package nl.marcovp.avans.cavanz.Controller;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -99,8 +100,8 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        searchView.setBackgroundColor(Color.BLUE);
 
-        
 
     }
 
