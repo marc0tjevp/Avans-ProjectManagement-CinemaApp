@@ -85,5 +85,6 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
             startActivity(mapIntent);
             return false;
         }
+        return true;
     }
 }
