@@ -43,7 +43,7 @@
         <activity android:name=".Controller.PaymentProviderActivity" />
         <activity
             android:name=".Controller.ShowSelectionActivity"
-            android:parentActivityName=".Controller.MovieDetailActivity" />
+            android:parentActivityName=".Controller.MainActivity" />
         android:parentActivityName=".Controller.MovieDetailActivity" />
         <activity android:name=".Controller.SeatSelectionActivity"></activity>
     </application>
