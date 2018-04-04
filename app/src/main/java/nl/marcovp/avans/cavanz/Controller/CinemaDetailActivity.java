@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.Marker;
+import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 //new constructor, can be replaced by the next line
 public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener {
     private final String TAG = getClass().getSimpleName();
+
 
     private TextView mTextMessage;
     private GoogleMapsApi mapsApi;
@@ -42,7 +45,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
 
                     return true;
                 case R.id.navigation_tickets:
-                    goToTicketActivity();
+                    goToRecentMovieActivity();
                     return true;
                 case R.id.navigation_info:
 
@@ -67,9 +70,14 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         TicketTypeAdapter adapter = new TicketTypeAdapter(this,types);
         listView.setAdapter(adapter);
 
+        ImageView imageView = findViewById(R.id.image_cinema);
+        Picasso.with(this).load("http://icons.iconarchive.com/icons/blackvariant/button-ui-requests-2/256/PopcornTime-icon.png").into(imageView);
+
+
         MapView mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        mapsApi = new GoogleMapsApi(mapView,this,this);
+
+        //mapsApi = new GoogleMapsApi(mapView,this,this); MAP API THROWS ERRORS
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -82,8 +90,8 @@ public class CinemaDetailActivity extends AppCompatActivity implements GoogleMap
         startActivity(intent);
     }
 
-    private void goToTicketActivity() {
-        Intent intent = new Intent(this, TicketActivity.class);
+    private void goToRecentMovieActivity() {
+        Intent intent = new Intent(this, RecentMovieActivity.class);
         startActivity(intent);
     }
 
