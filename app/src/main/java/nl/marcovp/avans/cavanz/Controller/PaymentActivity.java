@@ -89,7 +89,7 @@ public class PaymentActivity extends AppCompatActivity {
                     nextButton.setEnabled(true);
                 }
 
-                Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity.this, "Toegevoegd " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
 
             }
 
