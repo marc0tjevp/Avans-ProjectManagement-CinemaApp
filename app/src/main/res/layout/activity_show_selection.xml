@@ -34,19 +34,52 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/showSelection_DatesLL"
+            android:id="@+id/upper"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:elevation="12dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/text_show_selection_date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
+            <LinearLayout
+                android:id="@+id/showSelection_DatesLL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:elevation="12dp"
+                android:orientation="horizontal">
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Show_Selection_SelectShowingLL"
+            android:id="@+id/upper2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/text_show_selection_hall"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
+            <LinearLayout
+                android:id="@+id/Show_Selection_SelectShowingLL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

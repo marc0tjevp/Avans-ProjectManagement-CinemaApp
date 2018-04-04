@@ -11,17 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
-        android:layout_weight="2"
+        android:layout_weight="1.1"
         android:background="@color/cardview_dark_background"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/payment_ticket_imageview_poster"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="false"
             android:contentDescription="@string/text_payment_poster"
             android:cropToPadding="false"
-            android:padding="20dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <LinearLayout
@@ -70,107 +73,112 @@
 
     </GridLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_weight="2.3">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="56dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="Gekozen Tickets"
-                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/payment_ticket_textview_price"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="Gekozen Tickets"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
+                    <TextView
+                        android:id="@+id/payment_ticket_textview_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textAlignment="textEnd"
+                        tools:text="5 euro" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/payment_ticket_listview_tickets"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:textAlignment="textEnd"
-                tools:text="5 euro" />
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Uw Gegevens"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
+                <EditText
+                    android:id="@+id/payment_ticket_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Voornaam"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/payment_ticket_edit_surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Achternaam"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/payment_ticket_edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
         </LinearLayout>
-
-        <ListView
-            android:id="@+id/payment_ticket_listview_tickets"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:id="@+id/payment_ticket_textview_tickets"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Uw Gegevens"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
-
-        <EditText
-            android:id="@+id/payment_ticket_edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Voornaam"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/payment_ticket_edit_surname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Achternaam"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/payment_ticket_edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/payment_ticket_button_cancel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Annuleren" />
 
         <Button
             android:id="@+id/payment_ticket_button_next"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Betalen" />
     </LinearLayout>

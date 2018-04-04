@@ -27,7 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controller.CinemaDetailActivity"></activity>
-        <activity android:name=".Controller.MovieDetailActivity" />
+        <activity
+            android:name=".Controller.MovieDetailActivity"
+            android:parentActivityName=".Controller.MainActivity" />
         <activity
             android:name=".Controller.PaymentActivity"
             android:label="@string/title_activity_payment"
@@ -39,7 +41,10 @@
         <activity android:name=".Controller.MovieOfferActivity" />
         <activity android:name=".Controller.PaymentTicketActivity" />
         <activity android:name=".Controller.PaymentProviderActivity" />
-        <activity android:name=".Controller.ShowSelectionActivity" />
+        <activity
+            android:name=".Controller.ShowSelectionActivity"
+            android:parentActivityName=".Controller.MovieDetailActivity" />
+        android:parentActivityName=".Controller.MovieDetailActivity" />
         <activity android:name=".Controller.SeatSelectionActivity"></activity>
     </application>
 
