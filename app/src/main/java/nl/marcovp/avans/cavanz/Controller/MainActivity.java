@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: called");
-
         searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -78,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
                         startActivity(detailIntent);
                         break;
                     }
+
                 }
+//                Toast.makeText(MainActivity.this, "No movies found", Toast.LENGTH_LONG).show();
                 return false;
             }
 
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
                 return false;
             }
         });
-
+        searchView.setBackgroundColor(Color.LTGRAY);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

@@ -29,7 +29,7 @@ public class Seat implements Serializable {
 
     @Override
     public String toString() {
-        return "Rij: " + x + " Stoel: " + y;
+        return "Rij: " + y + " Stoel: " + x;
     }
 
     public boolean isSelected() {
