@@ -43,14 +43,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         showing = db.getShowing((String) getIntent().getExtras().get("SHOWING"));
 
-
         setTitle(R.string.text_payment_order);
 
-        // TODO: Get Movie from showing.
         Movie m = showing.getMovie();
-
-        // TODO: Get Showing from intent (MovieOfferActivity or MovieDetailActivity).
-
 
         TextView textViewTitle = findViewById(R.id.payment_textview_title);
         TextView textViewDate = findViewById(R.id.payment_textview_date);
@@ -94,7 +89,7 @@ public class PaymentActivity extends AppCompatActivity {
                     nextButton.setEnabled(true);
                 }
 
-                Toast.makeText(PaymentActivity.this, "Added " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity.this, "Toegevoegd " + tt.getTicketTypeName(), Toast.LENGTH_SHORT).show();
 
             }
 

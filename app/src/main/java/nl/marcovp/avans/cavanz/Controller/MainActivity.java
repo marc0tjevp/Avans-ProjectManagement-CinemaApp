@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
 
 
     private boolean searchOn = false;
-
-
     private ArrayList<Movie> movies;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -102,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnMovieSetAvailab
         mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        searchView.setBackgroundColor(Color.BLUE);
 
 
     }

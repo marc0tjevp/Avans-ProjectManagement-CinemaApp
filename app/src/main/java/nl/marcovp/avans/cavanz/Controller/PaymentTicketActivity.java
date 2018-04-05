@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import com.squareup.picasso.Picasso;
@@ -28,6 +29,7 @@ import nl.marcovp.avans.cavanz.Util.TicketTypeAdapter;
 public class PaymentTicketActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
     double ticketPrice = 0;
+    private ArrayList<Ticket> tickets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class PaymentTicketActivity extends AppCompatActivity {
         TextView textViewStartTime = findViewById(R.id.payment_ticket_textview_starttime);
         TextView textViewEndTime = findViewById(R.id.payment_ticket_textview_endtime);
         TextView textViewLocation = findViewById(R.id.payment_ticket_textview_location);
+        TextView textViewPrice = findViewById(R.id.payment_ticket_textview_price);
 
         textViewTitle.setText(showing.getMovie().getTitle());
         textViewDate.append(" " + showing.getDate());
@@ -62,11 +65,16 @@ public class PaymentTicketActivity extends AppCompatActivity {
             ticketPrice += ticket.getTicketPrice();
         }
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        textViewPrice.setText("€" + df.format(ticketPrice));
+
         final EditText editTextName = findViewById(R.id.payment_ticket_edit_name);
         final EditText editTextSurname = findViewById(R.id.payment_ticket_edit_surname);
         final EditText editTextEmail = findViewById(R.id.payment_ticket_edit_email);
 
         Button paymentButton = findViewById(R.id.payment_ticket_button_next);
+        paymentButton.setText("Naar stoelselectie");
         Button cancelButton = findViewById(R.id.payment_ticket_button_cancel);
 
         paymentButton.setOnClickListener(new View.OnClickListener() {
@@ -121,10 +129,18 @@ public class PaymentTicketActivity extends AppCompatActivity {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
                 } else {
-                    Ticket t = new Ticket(0, 0, showing, name, surname, email, ticketPrice);
 
-                    Intent i = new Intent(getApplicationContext(), PaymentProviderActivity.class);
-                    i.putExtra("TICKET", t);
+                    for (TicketType tt : ticketType) {
+                        Ticket t = new Ticket(null, showing, name, surname, email, tt.getTicketPrice());
+                        tickets.add(t);
+                    }
+
+
+
+                    Intent i = new Intent(getApplicationContext(), SeatSelectionActivity.class);
+                    i.putExtra("TICKETS", tickets);
+                    i.putExtra("SHOWING", showing);
+
                     startActivity(i);
                 }
 
